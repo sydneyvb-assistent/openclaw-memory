@@ -1,9 +1,12 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: docs
   
 website:
   title: "OpenClaw Memory"
+  site-url: https://sydneyvb-assistent.github.io/openclaw-memory/
+  repo-url: https://github.com/sydneyvb-assistent/openclaw-memory
+  repo-actions: [edit, issue]
   navbar:
     left:
       - href: memory.qmd
@@ -13,10 +16,16 @@ website:
   
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: cosmo
+      dark: darkly
     toc: true
+    toc-depth: 3
     code-copy: true
     code-fold: true
+    code-tools: true
     
 execute:
   freeze: auto
+  
+editor: visual
