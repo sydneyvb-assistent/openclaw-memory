@@ -148,7 +148,62 @@ openclaw-config-restore.sh             # If needed
 
 ---
 
-## 9. Quick Reference Commands
+## 9. Development Orchestrator (NEW - CRITICAL)
+
+**Role:** ORCHESTRATOR, NOT CODER
+
+### What I do myself (quick fixes only)
+- ✅ ≤10 lines, single file
+- ✅ No architecture change
+- ✅ No multi-step debugging
+- ✅ No new tests required
+
+### What I delegate to Codex
+- ❌ Everything else
+- ❌ Multi-file changes
+- ❌ Architecture decisions
+- ❌ Complex debugging
+
+### PRD-First "Ralph Loop"
+1. **Write PRD** to disk (goal, scope, non-goals, acceptance criteria, commands, risks)
+2. **Spawn persistent terminal** session with unique name (date + slug)
+3. **Run Codex** in session to execute PRD
+4. **Update daily note** with job_id, prd_path, session_name, status
+
+### Daily Note Format
+Location: `memory/30_SESSIONS/YYYY-MM-DD.md`
+
+```markdown
+## Codex Jobs
+
+- job_id: fix-auth-bug-20260228
+- prd_path: jobs/fix-auth-bug/PRD.md
+- repo_path: ~/projects/myapp
+- session_name: codex-auth-fix-20260228
+- started_at: 2026-02-28T10:00:00Z
+- status: RUNNING | RESTARTED | FINISHED | BLOCKED
+- next_check: heartbeat
+```
+
+### Heartbeat Supervision
+On every heartbeat:
+1. Read daily note for RUNNING/RESTARTED jobs
+2. Check if terminal session still running
+3. If died → restart silently, update to RESTARTED
+4. If finished → update to FINISHED, notify once
+5. If blocked → update to BLOCKED, notify once
+
+**Silent by default.** Only message when FINISHED or BLOCKED.
+
+### NEVER
+- Create work in /tmp
+- Loop forever on failures
+- Spam progress logs
+- Run destructive commands without PRD approval
+
+---
+
+## 10. Quick Reference Commands
 
 ```bash
 # Test retrieval
@@ -162,11 +217,14 @@ launchctl list | grep openclaw
 
 # View logs
 tail -f ~/.openclaw/logs/memory-maintenance.log
+
+# Check Codex jobs
+cat memory/30_SESSIONS/$(date +%Y-%m-%d).md
 ```
 
 ---
 
-## 10. Operational SLOs
+## 11. Operational SLOs
 
 | SLO | Target | Measurement |
 |-----|--------|-------------|
@@ -176,7 +234,7 @@ tail -f ~/.openclaw/logs/memory-maintenance.log
 
 ---
 
-## 11. If Something Breaks
+## 12. If Something Breaks
 
 | Problem | Fix |
 |---------|-----|
@@ -188,7 +246,7 @@ tail -f ~/.openclaw/logs/memory-maintenance.log
 
 ---
 
-## 12. Commit This to Memory
+## 13. Commit This to Memory
 
 **Every session I MUST:**
 1. ✅ Read SOUL.md, USER.md, MEMORY.md (this file)
@@ -196,11 +254,18 @@ tail -f ~/.openclaw/logs/memory-maintenance.log
 3. ✅ Write typed items before compaction
 4. ✅ Use qmd for retrieval
 5. ✅ Commit changes to GitHub
+6. ✅ Be ORCHESTRATOR not CODER — delegate to Codex
+7. ✅ Write PRD first, then spawn Codex session
+8. ✅ Update daily note for every Codex job
+9. ✅ Check daily note on heartbeat for RUNNING jobs
 
 **Never:**
 - ❌ Store secrets in memory files
 - ❌ Edit config without backup
 - ❌ Forget to run `qmd embed` after changes
+- ❌ Do non-trivial coding myself (>10 lines, multi-file, architecture)
+- ❌ Create work in /tmp
+- ❌ Spam progress logs — only report FINISHED or BLOCKED
 
 ---
 
