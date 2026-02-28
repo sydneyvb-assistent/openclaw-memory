@@ -318,8 +318,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#canon-decisions" id="toc-canon-decisions" class="nav-link active" data-scroll-target="#canon-decisions">Canon: Decisions</a>
   <ul class="collapse">
   <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
+  <li><a href="#critical-development-orchestrator-decisions-strict" id="toc-critical-development-orchestrator-decisions-strict" class="nav-link" data-scroll-target="#critical-development-orchestrator-decisions-strict">CRITICAL: Development Orchestrator Decisions (STRICT)</a></li>
   <li><a href="#memory-system-decisions" id="toc-memory-system-decisions" class="nav-link" data-scroll-target="#memory-system-decisions">Memory System Decisions</a></li>
-  <li><a href="#development-orchestrator-decisions-new-policy" id="toc-development-orchestrator-decisions-new-policy" class="nav-link" data-scroll-target="#development-orchestrator-decisions-new-policy">Development Orchestrator Decisions (NEW POLICY)</a></li>
   <li><a href="#model-routing-decisions" id="toc-model-routing-decisions" class="nav-link" data-scroll-target="#model-routing-decisions">Model Routing Decisions</a></li>
   <li><a href="#config-safety-decisions" id="toc-config-safety-decisions" class="nav-link" data-scroll-target="#config-safety-decisions">Config Safety Decisions</a></li>
   </ul></li>
@@ -342,6 +342,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Decision: [description] [YYYY-MM-DD] [scope]</li>
 </ul>
 </section>
+<section id="critical-development-orchestrator-decisions-strict" class="level2">
+<h2 class="anchored" data-anchor-id="critical-development-orchestrator-decisions-strict">CRITICAL: Development Orchestrator Decisions (STRICT)</h2>
+<ul>
+<li>Decision: Role is ORCHESTRATOR not CODER — I write PRDs and delegate to Codex [2026-02-28] [system:development]</li>
+<li>Decision: I do NOT write code — exception only for trivial &lt;=10 line fixes [2026-02-28] [system:development]</li>
+<li>Decision: If Codex unavailable, I must ASK before coding myself — NEVER assume [2026-02-28] [system:development]</li>
+<li>Decision: This rule is ABSOLUTE — no exceptions for “quick” or “small” changes [2026-02-28] [system:development]</li>
+</ul>
+</section>
 <section id="memory-system-decisions" class="level2">
 <h2 class="anchored" data-anchor-id="memory-system-decisions">Memory System Decisions</h2>
 <ul>
@@ -351,16 +360,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Decision: Nightly compaction runs at 3:00 AM via LaunchAgent ai.openclaw.memory-maintenance [2026-02-28] [system:memory]</li>
 <li>Decision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers [2026-02-27] [system:memory]</li>
 <li>Decision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON [2026-02-27] [system:memory]</li>
-</ul>
-</section>
-<section id="development-orchestrator-decisions-new-policy" class="level2">
-<h2 class="anchored" data-anchor-id="development-orchestrator-decisions-new-policy">Development Orchestrator Decisions (NEW POLICY)</h2>
-<ul>
-<li>Decision: Role is ORCHESTRATOR not CODER — delegate all non-trivial coding to Codex via persistent terminal sessions [2026-02-28] [system:development]</li>
-<li>Decision: PRD-first “Ralph Loop” style — PRD → autonomous execution → observable progress → minimal human intervention [2026-02-28] [system:development]</li>
-<li>Decision: Daily note as source of truth for all Codex jobs — track job_id, prd_path, session_name, status, timestamps [2026-02-28] [system:development]</li>
-<li>Decision: Heartbeat supervision — check daily note for RUNNING jobs, restart silently if died, report only FINISHED or BLOCKED [2026-02-28] [system:development]</li>
-<li>Decision: Workspace hygiene — never /tmp, all work in stable workspace directories only [2026-02-28] [system:development]</li>
 </ul>
 </section>
 <section id="model-routing-decisions" class="level2">
@@ -863,40 +862,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Format</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: <span class="co">[</span><span class="ot">description</span><span class="co">] [YYYY-MM-DD]</span> <span class="co">[</span><span class="ot">scope</span><span class="co">]</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Memory System Decisions</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## CRITICAL: Development Orchestrator Decisions (STRICT)</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the canonical memory system <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: GitHub repo is the durable source of truth; auto-commit and push enabled <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: QMD (Quick Markdown Search) is the retrieval backend for hybrid search <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Nightly compaction runs at 3:00 AM via LaunchAgent ai.openclaw.memory-maintenance <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Role is ORCHESTRATOR not CODER — I write PRDs and delegate to Codex <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: I do NOT write code — exception only for trivial &lt;=10 line fixes <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: If Codex unavailable, I must ASK before coding myself — NEVER assume <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: This rule is ABSOLUTE — no exceptions for "quick" or "small" changes <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Memory System Decisions</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Development Orchestrator Decisions (NEW POLICY)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Role is ORCHESTRATOR not CODER — delegate all non-trivial coding to Codex via persistent terminal sessions <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: PRD-first "Ralph Loop" style — PRD → autonomous execution → observable progress → minimal human intervention <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Daily note as source of truth for all Codex jobs — track job_id, prd_path, session_name, status, timestamps <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Heartbeat supervision — check daily note for RUNNING jobs, restart silently if died, report only FINISHED or BLOCKED <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Workspace hygiene — never /tmp, all work in stable workspace directories only <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:development]</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Routing Decisions</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: DEFAULT model is Moonshot kimi-k2.5 for almost everything (strong default) <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: STRICT TRIVIAL GATE defines when downshift to cheaper models is allowed <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: TRIVIAL tier: OpenAI gpt-5-nano (primary), Groq llama-3.1-8b-instant, Anthropic claude-haiku-4-5 <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: NON-TRIVIAL tier: Moonshot kimi-k2.5 (primary), Anthropic claude-sonnet-4-6, OpenAI gpt-5.2, Groq llama-3.3-70b-versatile <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: HEAVY tier: Moonshot kimi-k2-thinking (primary), Anthropic claude-opus-4-6, OpenAI gpt-5.2 <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Escalate immediately to NON-TRIVIAL if: steps/planning, code/config/commands, &gt;5 sentences, tools needed, uncertainty <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Escalate to HEAVY if: NON-TRIVIAL output inconsistent, task clearly complex/high-stakes <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Cost discipline ONLY on STRICTLY TRIVIAL requests; competence &gt; cost for real tasks <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Policy is: strong default + trivial downshift + fast escalation <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Config Safety Decisions</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Config recovery system with backup/validate/restore scripts in ~/bin/ <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: openclaw-config-edit.sh is the ONLY allowed method for config modifications <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Daily config backup cron at 3:00 AM <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the canonical memory system <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: GitHub repo is the durable source of truth; auto-commit and push enabled <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: QMD (Quick Markdown Search) is the retrieval backend for hybrid search <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Nightly compaction runs at 3:00 AM via LaunchAgent ai.openclaw.memory-maintenance <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Routing Decisions</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: DEFAULT model is Moonshot kimi-k2.5 for almost everything (strong default) <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: STRICT TRIVIAL GATE defines when downshift to cheaper models is allowed <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: TRIVIAL tier: OpenAI gpt-5-nano (primary), Groq llama-3.1-8b-instant, Anthropic claude-haiku-4-5 <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: NON-TRIVIAL tier: Moonshot kimi-k2.5 (primary), Anthropic claude-sonnet-4-6, OpenAI gpt-5.2, Groq llama-3.3-70b-versatile <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: HEAVY tier: Moonshot kimi-k2-thinking (primary), Anthropic claude-opus-4-6, OpenAI gpt-5.2 <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Escalate immediately to NON-TRIVIAL if: steps/planning, code/config/commands, &gt;5 sentences, tools needed, uncertainty <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Escalate to HEAVY if: NON-TRIVIAL output inconsistent, task clearly complex/high-stakes <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Cost discipline ONLY on STRICTLY TRIVIAL requests; competence &gt; cost for real tasks <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Policy is: strong default + trivial downshift + fast escalation <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Config Safety Decisions</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Config recovery system with backup/validate/restore scripts in ~/bin/ <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: openclaw-config-edit.sh is the ONLY allowed method for config modifications <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Daily config backup cron at 3:00 AM <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

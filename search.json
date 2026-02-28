@@ -42,18 +42,18 @@
     "text": "Format\n\nConstraint: [description] [YYYY-MM-DD] [scope]"
   },
   {
+    "objectID": "memory/10_CANON/constraints.html#critical-development-orchestrator-constraints-strict",
+    "href": "memory/10_CANON/constraints.html#critical-development-orchestrator-constraints-strict",
+    "title": "",
+    "section": "CRITICAL: Development Orchestrator Constraints (STRICT)",
+    "text": "CRITICAL: Development Orchestrator Constraints (STRICT)\n\nConstraint: Role is ORCHESTRATOR — NEVER CODER [2026-02-28] [system:development]\nConstraint: I do NOT write code — I write PRDs and delegate to Codex [2026-02-28] [system:development]\nConstraint: ONLY exception: trivial quick fixes &lt;=10 lines, single file, no logic [2026-02-28] [system:development]\nConstraint: If Codex unavailable, I must ASK before doing coding myself [2026-02-28] [system:development]\nConstraint: NEVER bypass this rule — even for “small” changes [2026-02-28] [system:development]"
+  },
+  {
     "objectID": "memory/10_CANON/constraints.html#memory-system-constraints",
     "href": "memory/10_CANON/constraints.html#memory-system-constraints",
     "title": "",
     "section": "Memory System Constraints",
     "text": "Memory System Constraints\n\nConstraint: NEVER store secrets/tokens/credentials in memory files [2026-02-27] [global]\nConstraint: ALWAYS search memory before making decisions or changing config [2026-02-27] [global]\nConstraint: ALWAYS write typed items before compaction/reset/milestone [2026-02-27] [global]\nConstraint: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the persistent source of truth [2026-02-27] [system:memory]\nConstraint: GitHub repo is the durable source of truth; all durable memory must be committed [2026-02-27] [system:memory]\nConstraint: Use ONLY typed memory format (Constraint:/Decision:/Preference:/Task:/OpenQuestion:) [2026-02-27] [global]\nConstraint: Pre-compaction flush MUST write to memory/30_SESSIONS/YYYY-MM-DD.md [2026-02-27] [system:memory]\nConstraint: Nightly compaction promotes items from SESSIONS to CANON; WORKING is emptied [2026-02-27] [system:memory]"
-  },
-  {
-    "objectID": "memory/10_CANON/constraints.html#development-orchestrator-constraints-new-policy",
-    "href": "memory/10_CANON/constraints.html#development-orchestrator-constraints-new-policy",
-    "title": "",
-    "section": "Development Orchestrator Constraints (NEW POLICY)",
-    "text": "Development Orchestrator Constraints (NEW POLICY)\n\nConstraint: Role is ORCHESTRATOR, NOT CODER — delegate non-trivial coding to Codex [2026-02-28] [system:development]\nConstraint: ONLY do “quick fixes” myself: &lt;=10 lines, single file, no architecture change [2026-02-28] [system:development]\nConstraint: EVERYTHING else: write PRD → spawn Codex terminal session → supervise via heartbeat [2026-02-28] [system:development]\nConstraint: PRD-FIRST is mandatory — PRD must include goal, scope, non-goals, acceptance criteria, commands, risks [2026-02-28] [system:development]\nConstraint: NEVER create work in /tmp — all work in stable workspace directories only [2026-02-28] [system:development]\nConstraint: ONE daily note per day as source of truth for all Codex jobs [2026-02-28] [system:development]\nConstraint: On heartbeat, check daily note for RUNNING/RESTARTED jobs — restart silently if died, report only FINISHED or BLOCKED [2026-02-28] [system:development]\nConstraint: Silent restart allowed only for: crash, transient failure, non-destructive issues [2026-02-28] [system:development]\nConstraint: NEVER loop forever — if repeated failure, switch to BLOCKED and ask for input [2026-02-28] [system:development]\nConstraint: ONLY message when job FINISHED or BLOCKED — no intermediate narration [2026-02-28] [system:development]"
   },
   {
     "objectID": "memory/10_CANON/constraints.html#model-routing-constraints",
@@ -637,18 +637,18 @@
     "text": "Format\n\nDecision: [description] [YYYY-MM-DD] [scope]"
   },
   {
+    "objectID": "memory/10_CANON/decisions.html#critical-development-orchestrator-decisions-strict",
+    "href": "memory/10_CANON/decisions.html#critical-development-orchestrator-decisions-strict",
+    "title": "",
+    "section": "CRITICAL: Development Orchestrator Decisions (STRICT)",
+    "text": "CRITICAL: Development Orchestrator Decisions (STRICT)\n\nDecision: Role is ORCHESTRATOR not CODER — I write PRDs and delegate to Codex [2026-02-28] [system:development]\nDecision: I do NOT write code — exception only for trivial &lt;=10 line fixes [2026-02-28] [system:development]\nDecision: If Codex unavailable, I must ASK before coding myself — NEVER assume [2026-02-28] [system:development]\nDecision: This rule is ABSOLUTE — no exceptions for “quick” or “small” changes [2026-02-28] [system:development]"
+  },
+  {
     "objectID": "memory/10_CANON/decisions.html#memory-system-decisions",
     "href": "memory/10_CANON/decisions.html#memory-system-decisions",
     "title": "",
     "section": "Memory System Decisions",
     "text": "Memory System Decisions\n\nDecision: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the canonical memory system [2026-02-27] [system:memory]\nDecision: GitHub repo is the durable source of truth; auto-commit and push enabled [2026-02-27] [system:memory]\nDecision: QMD (Quick Markdown Search) is the retrieval backend for hybrid search [2026-02-28] [system:memory]\nDecision: Nightly compaction runs at 3:00 AM via LaunchAgent ai.openclaw.memory-maintenance [2026-02-28] [system:memory]\nDecision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers [2026-02-27] [system:memory]\nDecision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON [2026-02-27] [system:memory]"
-  },
-  {
-    "objectID": "memory/10_CANON/decisions.html#development-orchestrator-decisions-new-policy",
-    "href": "memory/10_CANON/decisions.html#development-orchestrator-decisions-new-policy",
-    "title": "",
-    "section": "Development Orchestrator Decisions (NEW POLICY)",
-    "text": "Development Orchestrator Decisions (NEW POLICY)\n\nDecision: Role is ORCHESTRATOR not CODER — delegate all non-trivial coding to Codex via persistent terminal sessions [2026-02-28] [system:development]\nDecision: PRD-first “Ralph Loop” style — PRD → autonomous execution → observable progress → minimal human intervention [2026-02-28] [system:development]\nDecision: Daily note as source of truth for all Codex jobs — track job_id, prd_path, session_name, status, timestamps [2026-02-28] [system:development]\nDecision: Heartbeat supervision — check daily note for RUNNING jobs, restart silently if died, report only FINISHED or BLOCKED [2026-02-28] [system:development]\nDecision: Workspace hygiene — never /tmp, all work in stable workspace directories only [2026-02-28] [system:development]"
   },
   {
     "objectID": "memory/10_CANON/decisions.html#model-routing-decisions",
