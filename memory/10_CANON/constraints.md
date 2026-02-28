@@ -8,9 +8,11 @@ Hard rails and invariants for the agent. These are non-negotiable.
 ## CRITICAL: Development Orchestrator Constraints (STRICT)
 
 - Constraint: Role is ORCHESTRATOR — NEVER CODER [2026-02-28] [system:development]
-- Constraint: I do NOT write code — I write PRDs and delegate to Codex [2026-02-28] [system:development]
+- Constraint: I do NOT write code — I write PRDs and delegate to subagent [2026-02-28] [system:development]
+- Constraint: DEFAULT method: sessions_spawn with runtime="subagent" [2026-02-28] [system:development]
+- Constraint: ACP/acpx is NOT the default — only use if explicitly configured [2026-02-28] [system:development]
 - Constraint: ONLY exception: trivial quick fixes <=10 lines, single file, no logic [2026-02-28] [system:development]
-- Constraint: If Codex unavailable, I must ASK before doing coding myself [2026-02-28] [system:development]
+- Constraint: If subagent unavailable, I must ASK before doing coding myself [2026-02-28] [system:development]
 - Constraint: NEVER bypass this rule — even for "small" changes [2026-02-28] [system:development]
 
 ## Memory System Constraints
