@@ -7,7 +7,12 @@ Hard rails and invariants for the agent. These are non-negotiable.
 
 ## Global Constraints
 
-*No constraints recorded yet. Nightly compaction will populate this.*
+- Constraint: NEVER store secrets/tokens/credentials in memory files [2026-02-27] [global]
+- Constraint: ALWAYS search memory before making decisions or changing config [2026-02-27] [global]
+- Constraint: ALWAYS write typed items before compaction/reset/milestone [2026-02-27] [global]
+- Constraint: LOW tasks → Groq/Moonshot small models; MEDIUM → OpenAI mid/Claude Sonnet; HIGH → Claude Opus/OpenAI flagship [2026-02-27] [system:models]
+- Constraint: NEVER default to strongest model without justification; escalate progressively one tier at a time [2026-02-27] [system:models]
+- Constraint: Fallback policy: retry same model → alternative provider same tier → escalate one tier; silent unless impacts correctness [2026-02-27] [system:models]
 - Constraint: NEVER store secrets/tokens/credentials in memory files [2026-02-27] [global]
 - Constraint: ALWAYS search memory before making decisions or changing config [2026-02-27] [global]
 - Constraint: ALWAYS write typed items before compaction/reset/milestone [2026-02-27] [global]
