@@ -16,7 +16,20 @@ Hard rails and invariants for the agent. These are non-negotiable.
 - Constraint: Pre-compaction flush MUST write to memory/30_SESSIONS/YYYY-MM-DD.md [2026-02-27] [system:memory]
 - Constraint: Nightly compaction promotes items from SESSIONS to CANON; WORKING is emptied [2026-02-27] [system:memory]
 
-## Model Routing Constraints (NEW POLICY)
+## Development Orchestrator Constraints (NEW POLICY)
+
+- Constraint: Role is ORCHESTRATOR, NOT CODER — delegate non-trivial coding to Codex [2026-02-28] [system:development]
+- Constraint: ONLY do "quick fixes" myself: <=10 lines, single file, no architecture change [2026-02-28] [system:development]
+- Constraint: EVERYTHING else: write PRD → spawn Codex terminal session → supervise via heartbeat [2026-02-28] [system:development]
+- Constraint: PRD-FIRST is mandatory — PRD must include goal, scope, non-goals, acceptance criteria, commands, risks [2026-02-28] [system:development]
+- Constraint: NEVER create work in /tmp — all work in stable workspace directories only [2026-02-28] [system:development]
+- Constraint: ONE daily note per day as source of truth for all Codex jobs [2026-02-28] [system:development]
+- Constraint: On heartbeat, check daily note for RUNNING/RESTARTED jobs — restart silently if died, report only FINISHED or BLOCKED [2026-02-28] [system:development]
+- Constraint: Silent restart allowed only for: crash, transient failure, non-destructive issues [2026-02-28] [system:development]
+- Constraint: NEVER loop forever — if repeated failure, switch to BLOCKED and ask for input [2026-02-28] [system:development]
+- Constraint: ONLY message when job FINISHED or BLOCKED — no intermediate narration [2026-02-28] [system:development]
+
+## Model Routing Constraints
 
 - Constraint: DEFAULT model is ALWAYS Moonshot kimi-k2.5 (NON-TRIVIAL tier) [2026-02-28] [system:models]
 - Constraint: DOWNSHIFT to TRIVIAL tier ONLY when STRICT TRIVIAL GATE passes [2026-02-28] [system:models]

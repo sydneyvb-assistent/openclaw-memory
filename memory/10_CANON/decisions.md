@@ -14,7 +14,15 @@ Architectural and behavioral decisions that shape the agent.
 - Decision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers [2026-02-27] [system:memory]
 - Decision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON [2026-02-27] [system:memory]
 
-## Model Routing Decisions (NEW POLICY)
+## Development Orchestrator Decisions (NEW POLICY)
+
+- Decision: Role is ORCHESTRATOR not CODER — delegate all non-trivial coding to Codex via persistent terminal sessions [2026-02-28] [system:development]
+- Decision: PRD-first "Ralph Loop" style — PRD → autonomous execution → observable progress → minimal human intervention [2026-02-28] [system:development]
+- Decision: Daily note as source of truth for all Codex jobs — track job_id, prd_path, session_name, status, timestamps [2026-02-28] [system:development]
+- Decision: Heartbeat supervision — check daily note for RUNNING jobs, restart silently if died, report only FINISHED or BLOCKED [2026-02-28] [system:development]
+- Decision: Workspace hygiene — never /tmp, all work in stable workspace directories only [2026-02-28] [system:development]
+
+## Model Routing Decisions
 
 - Decision: DEFAULT model is Moonshot kimi-k2.5 for almost everything (strong default) [2026-02-28] [system:models]
 - Decision: STRICT TRIVIAL GATE defines when downshift to cheaper models is allowed [2026-02-28] [system:models]
