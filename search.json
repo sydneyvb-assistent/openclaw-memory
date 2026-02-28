@@ -238,32 +238,39 @@
     "text": "8. Config Safety (NEVER FORGET)\nBefore ANY config edit:\nopenclaw-config-backup.sh              # Create backup\nopenclaw-config-edit.sh &lt;script.py&gt;    # Safe edit with validation\nopenclaw-config-restore.sh             # If needed\nNever: - Edit openclaw.json directly - Run sed or manual edits on config - Skip validation"
   },
   {
+    "objectID": "MEMORY_ARCHITECT.html#development-orchestrator-new---critical",
+    "href": "MEMORY_ARCHITECT.html#development-orchestrator-new---critical",
+    "title": "",
+    "section": "9. Development Orchestrator (NEW - CRITICAL)",
+    "text": "9. Development Orchestrator (NEW - CRITICAL)\nRole: ORCHESTRATOR, NOT CODER\n\nWhat I do myself (quick fixes only)\n\n✅ ≤10 lines, single file\n✅ No architecture change\n✅ No multi-step debugging\n✅ No new tests required\n\n\n\nWhat I delegate to Codex\n\n❌ Everything else\n❌ Multi-file changes\n❌ Architecture decisions\n❌ Complex debugging\n\n\n\nPRD-First “Ralph Loop”\n\nWrite PRD to disk (goal, scope, non-goals, acceptance criteria, commands, risks)\nSpawn persistent terminal session with unique name (date + slug)\nRun Codex in session to execute PRD\nUpdate daily note with job_id, prd_path, session_name, status\n\n\n\nDaily Note Format\nLocation: memory/30_SESSIONS/YYYY-MM-DD.md\n## Codex Jobs\n\n- job_id: fix-auth-bug-20260228\n- prd_path: jobs/fix-auth-bug/PRD.md\n- repo_path: ~/projects/myapp\n- session_name: codex-auth-fix-20260228\n- started_at: 2026-02-28T10:00:00Z\n- status: RUNNING | RESTARTED | FINISHED | BLOCKED\n- next_check: heartbeat\n\n\nHeartbeat Supervision\nOn every heartbeat: 1. Read daily note for RUNNING/RESTARTED jobs 2. Check if terminal session still running 3. If died → restart silently, update to RESTARTED 4. If finished → update to FINISHED, notify once 5. If blocked → update to BLOCKED, notify once\nSilent by default. Only message when FINISHED or BLOCKED.\n\n\nNEVER\n\nCreate work in /tmp\nLoop forever on failures\nSpam progress logs\nRun destructive commands without PRD approval"
+  },
+  {
     "objectID": "MEMORY_ARCHITECT.html#quick-reference-commands",
     "href": "MEMORY_ARCHITECT.html#quick-reference-commands",
     "title": "",
-    "section": "9. Quick Reference Commands",
-    "text": "9. Quick Reference Commands\n# Test retrieval\nqmd query \"constraint memory\"\n\n# Manual compaction\ncd ~/.openclaw/workspace && python3 scripts/nightly_compact.py\n\n# Check cron status\nlaunchctl list | grep openclaw\n\n# View logs\ntail -f ~/.openclaw/logs/memory-maintenance.log"
+    "section": "10. Quick Reference Commands",
+    "text": "10. Quick Reference Commands\n# Test retrieval\nqmd query \"constraint memory\"\n\n# Manual compaction\ncd ~/.openclaw/workspace && python3 scripts/nightly_compact.py\n\n# Check cron status\nlaunchctl list | grep openclaw\n\n# View logs\ntail -f ~/.openclaw/logs/memory-maintenance.log\n\n# Check Codex jobs\ncat memory/30_SESSIONS/$(date +%Y-%m-%d).md"
   },
   {
     "objectID": "MEMORY_ARCHITECT.html#operational-slos",
     "href": "MEMORY_ARCHITECT.html#operational-slos",
     "title": "",
-    "section": "10. Operational SLOs",
-    "text": "10. Operational SLOs\n\n\n\nSLO\nTarget\nMeasurement\n\n\n\n\nDurability\n100%\nCritical facts in CANON survive sessions\n\n\nRetrievability\n&gt;95%\nRelevant memory surfaced before action\n\n\nCompaction Safety\n0 loss\nNever lose constraints/decisions"
+    "section": "11. Operational SLOs",
+    "text": "11. Operational SLOs\n\n\n\nSLO\nTarget\nMeasurement\n\n\n\n\nDurability\n100%\nCritical facts in CANON survive sessions\n\n\nRetrievability\n&gt;95%\nRelevant memory surfaced before action\n\n\nCompaction Safety\n0 loss\nNever lose constraints/decisions"
   },
   {
     "objectID": "MEMORY_ARCHITECT.html#if-something-breaks",
     "href": "MEMORY_ARCHITECT.html#if-something-breaks",
     "title": "",
-    "section": "11. If Something Breaks",
-    "text": "11. If Something Breaks\n\n\n\nProblem\nFix\n\n\n\n\nmemory_search returns nothing\nqmd update && qmd embed\n\n\nQMD not found\nCheck PATH: which qmd\n\n\nCompaction not running\nlaunchctl list \\| grep openclaw\n\n\nConfig corrupted\nopenclaw-config-restore.sh\n\n\nGit conflicts\ncd ~/.openclaw/workspace && git pull --rebase"
+    "section": "12. If Something Breaks",
+    "text": "12. If Something Breaks\n\n\n\nProblem\nFix\n\n\n\n\nmemory_search returns nothing\nqmd update && qmd embed\n\n\nQMD not found\nCheck PATH: which qmd\n\n\nCompaction not running\nlaunchctl list \\| grep openclaw\n\n\nConfig corrupted\nopenclaw-config-restore.sh\n\n\nGit conflicts\ncd ~/.openclaw/workspace && git pull --rebase"
   },
   {
     "objectID": "MEMORY_ARCHITECT.html#commit-this-to-memory",
     "href": "MEMORY_ARCHITECT.html#commit-this-to-memory",
     "title": "",
-    "section": "12. Commit This to Memory",
-    "text": "12. Commit This to Memory\nEvery session I MUST: 1. ✅ Read SOUL.md, USER.md, MEMORY.md (this file) 2. ✅ Search memory before acting 3. ✅ Write typed items before compaction 4. ✅ Use qmd for retrieval 5. ✅ Commit changes to GitHub\nNever: - ❌ Store secrets in memory files - ❌ Edit config without backup - ❌ Forget to run qmd embed after changes\n\nLast updated: 2026-02-28 Canonical source: https://github.com/sydneyvb-assistent/openclaw-memory/"
+    "section": "13. Commit This to Memory",
+    "text": "13. Commit This to Memory\nEvery session I MUST: 1. ✅ Read SOUL.md, USER.md, MEMORY.md (this file) 2. ✅ Search memory before acting 3. ✅ Write typed items before compaction 4. ✅ Use qmd for retrieval 5. ✅ Commit changes to GitHub 6. ✅ Be ORCHESTRATOR not CODER — delegate to Codex 7. ✅ Write PRD first, then spawn Codex session 8. ✅ Update daily note for every Codex job 9. ✅ Check daily note on heartbeat for RUNNING jobs\nNever: - ❌ Store secrets in memory files - ❌ Edit config without backup - ❌ Forget to run qmd embed after changes - ❌ Do non-trivial coding myself (&gt;10 lines, multi-file, architecture) - ❌ Create work in /tmp - ❌ Spam progress logs — only report FINISHED or BLOCKED\n\nLast updated: 2026-02-28 Canonical source: https://github.com/sydneyvb-assistent/openclaw-memory/"
   },
   {
     "objectID": "BOOTSTRAP.html",

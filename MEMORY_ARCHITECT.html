@@ -325,10 +325,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#nightly-compaction-300-am" id="toc-nightly-compaction-300-am" class="nav-link" data-scroll-target="#nightly-compaction-300-am">6. Nightly Compaction (3:00 AM)</a></li>
   <li><a href="#qmd-retrieval-primary-search" id="toc-qmd-retrieval-primary-search" class="nav-link" data-scroll-target="#qmd-retrieval-primary-search">7. QMD Retrieval (Primary Search)</a></li>
   <li><a href="#config-safety-never-forget" id="toc-config-safety-never-forget" class="nav-link" data-scroll-target="#config-safety-never-forget">8. Config Safety (NEVER FORGET)</a></li>
-  <li><a href="#quick-reference-commands" id="toc-quick-reference-commands" class="nav-link" data-scroll-target="#quick-reference-commands">9. Quick Reference Commands</a></li>
-  <li><a href="#operational-slos" id="toc-operational-slos" class="nav-link" data-scroll-target="#operational-slos">10. Operational SLOs</a></li>
-  <li><a href="#if-something-breaks" id="toc-if-something-breaks" class="nav-link" data-scroll-target="#if-something-breaks">11. If Something Breaks</a></li>
-  <li><a href="#commit-this-to-memory" id="toc-commit-this-to-memory" class="nav-link" data-scroll-target="#commit-this-to-memory">12. Commit This to Memory</a></li>
+  <li><a href="#development-orchestrator-new---critical" id="toc-development-orchestrator-new---critical" class="nav-link" data-scroll-target="#development-orchestrator-new---critical">9. Development Orchestrator (NEW - CRITICAL)</a>
+  <ul class="collapse">
+  <li><a href="#what-i-do-myself-quick-fixes-only" id="toc-what-i-do-myself-quick-fixes-only" class="nav-link" data-scroll-target="#what-i-do-myself-quick-fixes-only">What I do myself (quick fixes only)</a></li>
+  <li><a href="#what-i-delegate-to-codex" id="toc-what-i-delegate-to-codex" class="nav-link" data-scroll-target="#what-i-delegate-to-codex">What I delegate to Codex</a></li>
+  <li><a href="#prd-first-ralph-loop" id="toc-prd-first-ralph-loop" class="nav-link" data-scroll-target="#prd-first-ralph-loop">PRD-First “Ralph Loop”</a></li>
+  <li><a href="#daily-note-format" id="toc-daily-note-format" class="nav-link" data-scroll-target="#daily-note-format">Daily Note Format</a></li>
+  <li><a href="#heartbeat-supervision" id="toc-heartbeat-supervision" class="nav-link" data-scroll-target="#heartbeat-supervision">Heartbeat Supervision</a></li>
+  <li><a href="#never" id="toc-never" class="nav-link" data-scroll-target="#never">NEVER</a></li>
+  </ul></li>
+  <li><a href="#quick-reference-commands" id="toc-quick-reference-commands" class="nav-link" data-scroll-target="#quick-reference-commands">10. Quick Reference Commands</a></li>
+  <li><a href="#operational-slos" id="toc-operational-slos" class="nav-link" data-scroll-target="#operational-slos">11. Operational SLOs</a></li>
+  <li><a href="#if-something-breaks" id="toc-if-something-breaks" class="nav-link" data-scroll-target="#if-something-breaks">12. If Something Breaks</a></li>
+  <li><a href="#commit-this-to-memory" id="toc-commit-this-to-memory" class="nav-link" data-scroll-target="#commit-this-to-memory">13. Commit This to Memory</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/edit/main/MEMORY_ARCHITECT.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -446,23 +455,85 @@ maxResults: 10</code></pre></li>
 <p><strong>Never:</strong> - Edit <code>openclaw.json</code> directly - Run <code>sed</code> or manual edits on config - Skip validation</p>
 <hr>
 </section>
+<section id="development-orchestrator-new---critical" class="level2">
+<h2 class="anchored" data-anchor-id="development-orchestrator-new---critical">9. Development Orchestrator (NEW - CRITICAL)</h2>
+<p><strong>Role:</strong> ORCHESTRATOR, NOT CODER</p>
+<section id="what-i-do-myself-quick-fixes-only" class="level3">
+<h3 class="anchored" data-anchor-id="what-i-do-myself-quick-fixes-only">What I do myself (quick fixes only)</h3>
+<ul>
+<li>✅ ≤10 lines, single file</li>
+<li>✅ No architecture change</li>
+<li>✅ No multi-step debugging</li>
+<li>✅ No new tests required</li>
+</ul>
+</section>
+<section id="what-i-delegate-to-codex" class="level3">
+<h3 class="anchored" data-anchor-id="what-i-delegate-to-codex">What I delegate to Codex</h3>
+<ul>
+<li>❌ Everything else</li>
+<li>❌ Multi-file changes</li>
+<li>❌ Architecture decisions</li>
+<li>❌ Complex debugging</li>
+</ul>
+</section>
+<section id="prd-first-ralph-loop" class="level3">
+<h3 class="anchored" data-anchor-id="prd-first-ralph-loop">PRD-First “Ralph Loop”</h3>
+<ol type="1">
+<li><strong>Write PRD</strong> to disk (goal, scope, non-goals, acceptance criteria, commands, risks)</li>
+<li><strong>Spawn persistent terminal</strong> session with unique name (date + slug)</li>
+<li><strong>Run Codex</strong> in session to execute PRD</li>
+<li><strong>Update daily note</strong> with job_id, prd_path, session_name, status</li>
+</ol>
+</section>
+<section id="daily-note-format" class="level3">
+<h3 class="anchored" data-anchor-id="daily-note-format">Daily Note Format</h3>
+<p>Location: <code>memory/30_SESSIONS/YYYY-MM-DD.md</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Codex Jobs</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>job_id: fix-auth-bug-20260228</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>prd_path: jobs/fix-auth-bug/PRD.md</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>repo_path: ~/projects/myapp</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>session_name: codex-auth-fix-20260228</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>started_at: 2026-02-28T10<span class="sc">:00:</span>00Z</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>status: RUNNING | RESTARTED | FINISHED | BLOCKED</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>next_check: heartbeat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="heartbeat-supervision" class="level3">
+<h3 class="anchored" data-anchor-id="heartbeat-supervision">Heartbeat Supervision</h3>
+<p>On every heartbeat: 1. Read daily note for RUNNING/RESTARTED jobs 2. Check if terminal session still running 3. If died → restart silently, update to RESTARTED 4. If finished → update to FINISHED, notify once 5. If blocked → update to BLOCKED, notify once</p>
+<p><strong>Silent by default.</strong> Only message when FINISHED or BLOCKED.</p>
+</section>
+<section id="never" class="level3">
+<h3 class="anchored" data-anchor-id="never">NEVER</h3>
+<ul>
+<li>Create work in /tmp</li>
+<li>Loop forever on failures</li>
+<li>Spam progress logs</li>
+<li>Run destructive commands without PRD approval</li>
+</ul>
+<hr>
+</section>
+</section>
 <section id="quick-reference-commands" class="level2">
-<h2 class="anchored" data-anchor-id="quick-reference-commands">9. Quick Reference Commands</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test retrieval</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">qmd</span> query <span class="st">"constraint memory"</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Manual compaction</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/.openclaw/workspace <span class="kw">&amp;&amp;</span> <span class="ex">python3</span> scripts/nightly_compact.py</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check cron status</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">launchctl</span> list <span class="kw">|</span> <span class="fu">grep</span> openclaw</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># View logs</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-f</span> ~/.openclaw/logs/memory-maintenance.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<h2 class="anchored" data-anchor-id="quick-reference-commands">10. Quick Reference Commands</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test retrieval</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">qmd</span> query <span class="st">"constraint memory"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Manual compaction</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/.openclaw/workspace <span class="kw">&amp;&amp;</span> <span class="ex">python3</span> scripts/nightly_compact.py</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check cron status</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">launchctl</span> list <span class="kw">|</span> <span class="fu">grep</span> openclaw</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># View logs</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-f</span> ~/.openclaw/logs/memory-maintenance.log</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Check Codex jobs</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> memory/30_SESSIONS/<span class="va">$(</span><span class="fu">date</span> +%Y-%m-%d<span class="va">)</span>.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 <section id="operational-slos" class="level2">
-<h2 class="anchored" data-anchor-id="operational-slos">10. Operational SLOs</h2>
+<h2 class="anchored" data-anchor-id="operational-slos">11. Operational SLOs</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -492,7 +563,7 @@ maxResults: 10</code></pre></li>
 <hr>
 </section>
 <section id="if-something-breaks" class="level2">
-<h2 class="anchored" data-anchor-id="if-something-breaks">11. If Something Breaks</h2>
+<h2 class="anchored" data-anchor-id="if-something-breaks">12. If Something Breaks</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -526,9 +597,9 @@ maxResults: 10</code></pre></li>
 <hr>
 </section>
 <section id="commit-this-to-memory" class="level2">
-<h2 class="anchored" data-anchor-id="commit-this-to-memory">12. Commit This to Memory</h2>
-<p><strong>Every session I MUST:</strong> 1. ✅ Read SOUL.md, USER.md, MEMORY.md (this file) 2. ✅ Search memory before acting 3. ✅ Write typed items before compaction 4. ✅ Use qmd for retrieval 5. ✅ Commit changes to GitHub</p>
-<p><strong>Never:</strong> - ❌ Store secrets in memory files - ❌ Edit config without backup - ❌ Forget to run <code>qmd embed</code> after changes</p>
+<h2 class="anchored" data-anchor-id="commit-this-to-memory">13. Commit This to Memory</h2>
+<p><strong>Every session I MUST:</strong> 1. ✅ Read SOUL.md, USER.md, MEMORY.md (this file) 2. ✅ Search memory before acting 3. ✅ Write typed items before compaction 4. ✅ Use qmd for retrieval 5. ✅ Commit changes to GitHub 6. ✅ Be ORCHESTRATOR not CODER — delegate to Codex 7. ✅ Write PRD first, then spawn Codex session 8. ✅ Update daily note for every Codex job 9. ✅ Check daily note on heartbeat for RUNNING jobs</p>
+<p><strong>Never:</strong> - ❌ Store secrets in memory files - ❌ Edit config without backup - ❌ Forget to run <code>qmd embed</code> after changes - ❌ Do non-trivial coding myself (&gt;10 lines, multi-file, architecture) - ❌ Create work in /tmp - ❌ Spam progress logs — only report FINISHED or BLOCKED</p>
 <hr>
 <p><em>Last updated: 2026-02-28</em> <em>Canonical source: https://github.com/sydneyvb-assistent/openclaw-memory/</em></p>
 
@@ -1003,214 +1074,279 @@ maxResults: 10</code></pre></li>
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Memory Architect System</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>**Persistent operational rules for OpenClaw memory management.**</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>This document is the canonical reference for the memory system. I must follow these rules every session.</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Repository Structure (4-Tier)</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="in">memory/</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="in">├── 10_CANON/           # Small, stable, curated (NEVER lose these)</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── constraints.md  # Hard rails and invariants</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── decisions.md    # Architectural decisions</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── preferences.md  # Stable preferences</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── README.md       # Canon rules</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="in">├── 20_PROJECTS/        # Bounded, scoped project memory</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── &lt;project&gt;/</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── decision-log.md</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── open-questions.md</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── task-backlog.md</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── .template/      # Copy for new projects</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="in">├── 30_SESSIONS/        # Append-only daily flush notes</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── YYYY-MM-DD.md   # One file per day</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="in">└── 40_WORKING/         # Temporary inbox/scratch (EMPTIED nightly)</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── inbox.md</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="in">    └── scratch.md</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>**Rule:** If CANON grows &gt;200 lines, split by domain. Keep file count minimal.</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Typed Memory Format (MANDATORY)</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>Every stored memory MUST use these exact types:</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="in">```markdown</span></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Type</span><span class="co">]</span>: <span class="co">[</span><span class="ot">description</span><span class="co">] [YYYY-MM-DD]</span> <span class="co">[</span><span class="ot">scope</span><span class="co">]</span></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>Types: Constraint:, Decision:, Preference:, Task:, OpenQuestion:</span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>Scope: <span class="co">[</span><span class="ot">global</span><span class="co">]</span>, <span class="co">[</span><span class="ot">project:&lt;name&gt;</span><span class="co">]</span>, <span class="co">[</span><span class="ot">system:&lt;component&gt;</span><span class="co">]</span></span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>Examples:</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: NEVER store secrets in memory <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [global]</span></span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Use QMD for retrieval <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Task: Complete setup <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [project:memory-architect]</span></span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>OpenQuestion: How to handle large files? <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="in">**Rules:**</span></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="in">- 1-2 bullets per item (max)</span></span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="in">- Include date and scope on every entry</span></span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a><span class="in">- No prose, no speculation, no repetition</span></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="in">## 3. Read Before Write (NON-NEGOTIABLE)</span></span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="in">Before ANY plan, config change, or decision:</span></span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="in">1. Search memory using `memory_search`:</span></span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="in">   ```</span></span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>   query: "constraint config"</span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>   maxResults: 10</span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>   <span class="in">```</span></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a><span class="in">2. If constraint/decision exists → FOLLOW IT</span></span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a><span class="in">3. If conflict exists → CANON wins, record "Conflict:" in today's session</span></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="in">## 4. Write Before Compaction/Reset (MANDATORY)</span></span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="in">MUST write typed items to today's session file BEFORE:</span></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="in">- Any decision is made</span></span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="in">- Any constraint/rail is introduced</span></span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="in">- Any stable preference appears</span></span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="in">- Tasks are assigned</span></span>
-<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a><span class="in">- An open question blocks progress</span></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="in">- Triggering compaction / reset / milestone</span></span>
-<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="in">**Location:** `memory/30_SESSIONS/YYYY-MM-DD.md`</span></span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a><span class="in">## 5. Pre-Compaction Flush</span></span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a><span class="in">OpenClaw auto-flushes when context nears compaction:</span></span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a><span class="in">- Trigger: `softThresholdTokens: 4000`</span></span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a><span class="in">- Action: Extract typed items, write to session file</span></span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a><span class="in">- Response: `NO_REPLY`</span></span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a><span class="in">**I do NOT see this flush.** It's automatic.</span></span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a><span class="in">## 6. Nightly Compaction (3:00 AM)</span></span>
-<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a><span class="in">LaunchAgent `ai.openclaw.memory-maintenance` runs:</span></span>
-<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a><span class="in">1. **Config backup** → `~/.openclaw/backups/`</span></span>
-<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a><span class="in">2. **Python compaction** (`scripts/nightly_compact.py`):</span></span>
-<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a><span class="in">   - Parse session files (last 7 days)</span></span>
-<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a><span class="in">   - Promote items to CANON (deduplicated)</span></span>
-<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a><span class="in">   - Archive WORKING files</span></span>
-<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a><span class="in">3. **QMD reindex**: `qmd update &amp;&amp; qmd embed`</span></span>
-<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a><span class="in">4. **Git commit + push**: `nightly: compact memory YYYY-MM-DD`</span></span>
-<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
-<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-113"><a href="#cb8-113" aria-hidden="true" tabindex="-1"></a><span class="in">## 7. QMD Retrieval (Primary Search)</span></span>
-<span id="cb8-114"><a href="#cb8-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-115"><a href="#cb8-115" aria-hidden="true" tabindex="-1"></a><span class="in">**Installation:** `npm link /tmp/qmd` (built from source)</span></span>
-<span id="cb8-116"><a href="#cb8-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-117"><a href="#cb8-117" aria-hidden="true" tabindex="-1"></a><span class="in">**Commands:**</span></span>
-<span id="cb8-118"><a href="#cb8-118" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb8-119"><a href="#cb8-119" aria-hidden="true" tabindex="-1"></a><span class="in">qmd query "semantic search"     # Hybrid (semantic + lexical)</span></span>
-<span id="cb8-120"><a href="#cb8-120" aria-hidden="true" tabindex="-1"></a><span class="in">qmd search "lexical keywords"   # BM25 only</span></span>
-<span id="cb8-121"><a href="#cb8-121" aria-hidden="true" tabindex="-1"></a><span class="in">qmd vsearch "vector query"      # Vector only</span></span>
-<span id="cb8-122"><a href="#cb8-122" aria-hidden="true" tabindex="-1"></a><span class="in">qmd get memory/10_CANON/constraints.md  # Fetch file</span></span>
-<span id="cb8-123"><a href="#cb8-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-124"><a href="#cb8-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-125"><a href="#cb8-125" aria-hidden="true" tabindex="-1"></a>**After ANY memory change:**</span>
-<span id="cb8-126"><a href="#cb8-126" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb8-127"><a href="#cb8-127" aria-hidden="true" tabindex="-1"></a><span class="ex">qmd</span> update    <span class="co"># Reindex</span></span>
-<span id="cb8-128"><a href="#cb8-128" aria-hidden="true" tabindex="-1"></a><span class="ex">qmd</span> embed     <span class="co"># Regenerate embeddings</span></span>
-<span id="cb8-129"><a href="#cb8-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-130"><a href="#cb8-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-131"><a href="#cb8-131" aria-hidden="true" tabindex="-1"></a>**Collection:** `memory` → `~/.openclaw/workspace/memory/**/*.md`</span>
-<span id="cb8-132"><a href="#cb8-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-133"><a href="#cb8-133" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb8-134"><a href="#cb8-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-135"><a href="#cb8-135" aria-hidden="true" tabindex="-1"></a><span class="fu">## 8. Config Safety (NEVER FORGET)</span></span>
-<span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-137"><a href="#cb8-137" aria-hidden="true" tabindex="-1"></a>**Before ANY config edit:**</span>
-<span id="cb8-138"><a href="#cb8-138" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb8-139"><a href="#cb8-139" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw-config-backup.sh</span>              <span class="co"># Create backup</span></span>
-<span id="cb8-140"><a href="#cb8-140" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw-config-edit.sh</span> <span class="op">&lt;</span>script.py<span class="op">&gt;</span>    <span class="co"># Safe edit with validation</span></span>
-<span id="cb8-141"><a href="#cb8-141" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw-config-restore.sh</span>             <span class="co"># If needed</span></span>
-<span id="cb8-142"><a href="#cb8-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-143"><a href="#cb8-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-144"><a href="#cb8-144" aria-hidden="true" tabindex="-1"></a>**Never:**</span>
-<span id="cb8-145"><a href="#cb8-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Edit <span class="in">`openclaw.json`</span> directly</span>
-<span id="cb8-146"><a href="#cb8-146" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Run <span class="in">`sed`</span> or manual edits on config</span>
-<span id="cb8-147"><a href="#cb8-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Skip validation</span>
-<span id="cb8-148"><a href="#cb8-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb8-150"><a href="#cb8-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-151"><a href="#cb8-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## 9. Quick Reference Commands</span></span>
-<span id="cb8-152"><a href="#cb8-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-153"><a href="#cb8-153" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb8-154"><a href="#cb8-154" aria-hidden="true" tabindex="-1"></a><span class="co"># Test retrieval</span></span>
-<span id="cb8-155"><a href="#cb8-155" aria-hidden="true" tabindex="-1"></a><span class="ex">qmd</span> query <span class="st">"constraint memory"</span></span>
-<span id="cb8-156"><a href="#cb8-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-157"><a href="#cb8-157" aria-hidden="true" tabindex="-1"></a><span class="co"># Manual compaction</span></span>
-<span id="cb8-158"><a href="#cb8-158" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/.openclaw/workspace <span class="kw">&amp;&amp;</span> <span class="ex">python3</span> scripts/nightly_compact.py</span>
-<span id="cb8-159"><a href="#cb8-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-160"><a href="#cb8-160" aria-hidden="true" tabindex="-1"></a><span class="co"># Check cron status</span></span>
-<span id="cb8-161"><a href="#cb8-161" aria-hidden="true" tabindex="-1"></a><span class="ex">launchctl</span> list <span class="kw">|</span> <span class="fu">grep</span> openclaw</span>
-<span id="cb8-162"><a href="#cb8-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a><span class="co"># View logs</span></span>
-<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-f</span> ~/.openclaw/logs/memory-maintenance.log</span>
-<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb8-168"><a href="#cb8-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-169"><a href="#cb8-169" aria-hidden="true" tabindex="-1"></a><span class="fu">## 10. Operational SLOs</span></span>
-<span id="cb8-170"><a href="#cb8-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-171"><a href="#cb8-171" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> SLO <span class="pp">|</span> Target <span class="pp">|</span> Measurement <span class="pp">|</span></span>
-<span id="cb8-172"><a href="#cb8-172" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----|--------|-------------|</span></span>
-<span id="cb8-173"><a href="#cb8-173" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Durability <span class="pp">|</span> 100% <span class="pp">|</span> Critical facts in CANON survive sessions <span class="pp">|</span></span>
-<span id="cb8-174"><a href="#cb8-174" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Retrievability <span class="pp">|</span> &gt;95% <span class="pp">|</span> Relevant memory surfaced before action <span class="pp">|</span></span>
-<span id="cb8-175"><a href="#cb8-175" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Compaction Safety <span class="pp">|</span> 0 loss <span class="pp">|</span> Never lose constraints/decisions <span class="pp">|</span></span>
-<span id="cb8-176"><a href="#cb8-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-177"><a href="#cb8-177" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb8-178"><a href="#cb8-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-179"><a href="#cb8-179" aria-hidden="true" tabindex="-1"></a><span class="fu">## 11. If Something Breaks</span></span>
-<span id="cb8-180"><a href="#cb8-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-181"><a href="#cb8-181" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Problem <span class="pp">|</span> Fix <span class="pp">|</span></span>
-<span id="cb8-182"><a href="#cb8-182" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------|-----|</span></span>
-<span id="cb8-183"><a href="#cb8-183" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`memory_search`</span> returns nothing <span class="pp">|</span> <span class="in">`qmd update &amp;&amp; qmd embed`</span> <span class="pp">|</span></span>
-<span id="cb8-184"><a href="#cb8-184" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> QMD not found <span class="pp">|</span> Check PATH: <span class="in">`which qmd`</span> <span class="pp">|</span></span>
-<span id="cb8-185"><a href="#cb8-185" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Compaction not running <span class="pp">|</span> <span class="in">`launchctl list \| grep openclaw`</span> <span class="pp">|</span></span>
-<span id="cb8-186"><a href="#cb8-186" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Config corrupted <span class="pp">|</span> <span class="in">`openclaw-config-restore.sh`</span> <span class="pp">|</span></span>
-<span id="cb8-187"><a href="#cb8-187" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Git conflicts <span class="pp">|</span> <span class="in">`cd ~/.openclaw/workspace &amp;&amp; git pull --rebase`</span> <span class="pp">|</span></span>
-<span id="cb8-188"><a href="#cb8-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-189"><a href="#cb8-189" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb8-190"><a href="#cb8-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-191"><a href="#cb8-191" aria-hidden="true" tabindex="-1"></a><span class="fu">## 12. Commit This to Memory</span></span>
-<span id="cb8-192"><a href="#cb8-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-193"><a href="#cb8-193" aria-hidden="true" tabindex="-1"></a>**Every session I MUST:**</span>
-<span id="cb8-194"><a href="#cb8-194" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>✅ Read SOUL.md, USER.md, MEMORY.md (this file)</span>
-<span id="cb8-195"><a href="#cb8-195" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>✅ Search memory before acting</span>
-<span id="cb8-196"><a href="#cb8-196" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>✅ Write typed items before compaction</span>
-<span id="cb8-197"><a href="#cb8-197" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>✅ Use qmd for retrieval</span>
-<span id="cb8-198"><a href="#cb8-198" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>✅ Commit changes to GitHub</span>
-<span id="cb8-199"><a href="#cb8-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-200"><a href="#cb8-200" aria-hidden="true" tabindex="-1"></a>**Never:**</span>
-<span id="cb8-201"><a href="#cb8-201" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Store secrets in memory files</span>
-<span id="cb8-202"><a href="#cb8-202" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Edit config without backup</span>
-<span id="cb8-203"><a href="#cb8-203" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Forget to run <span class="in">`qmd embed`</span> after changes</span>
-<span id="cb8-204"><a href="#cb8-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-205"><a href="#cb8-205" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb8-206"><a href="#cb8-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-207"><a href="#cb8-207" aria-hidden="true" tabindex="-1"></a>*Last updated: 2026-02-28*</span>
-<span id="cb8-208"><a href="#cb8-208" aria-hidden="true" tabindex="-1"></a>*Canonical source: https://github.com/sydneyvb-assistent/openclaw-memory/*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Memory Architect System</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>**Persistent operational rules for OpenClaw memory management.**</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>This document is the canonical reference for the memory system. I must follow these rules every session.</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. Repository Structure (4-Tier)</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="in">memory/</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="in">├── 10_CANON/           # Small, stable, curated (NEVER lose these)</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── constraints.md  # Hard rails and invariants</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── decisions.md    # Architectural decisions</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── preferences.md  # Stable preferences</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── README.md       # Canon rules</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="in">├── 20_PROJECTS/        # Bounded, scoped project memory</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="in">│   ├── &lt;project&gt;/</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── decision-log.md</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   ├── open-questions.md</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="in">│   │   └── task-backlog.md</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── .template/      # Copy for new projects</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="in">├── 30_SESSIONS/        # Append-only daily flush notes</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="in">│   └── YYYY-MM-DD.md   # One file per day</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="in">└── 40_WORKING/         # Temporary inbox/scratch (EMPTIED nightly)</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── inbox.md</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="in">    └── scratch.md</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>**Rule:** If CANON grows &gt;200 lines, split by domain. Keep file count minimal.</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. Typed Memory Format (MANDATORY)</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>Every stored memory MUST use these exact types:</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="in">```markdown</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Type</span><span class="co">]</span>: <span class="co">[</span><span class="ot">description</span><span class="co">] [YYYY-MM-DD]</span> <span class="co">[</span><span class="ot">scope</span><span class="co">]</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>Types: Constraint:, Decision:, Preference:, Task:, OpenQuestion:</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>Scope: <span class="co">[</span><span class="ot">global</span><span class="co">]</span>, <span class="co">[</span><span class="ot">project:&lt;name&gt;</span><span class="co">]</span>, <span class="co">[</span><span class="ot">system:&lt;component&gt;</span><span class="co">]</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>Examples:</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: NEVER store secrets in memory <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [global]</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Use QMD for retrieval <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Task: Complete setup <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [project:memory-architect]</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>OpenQuestion: How to handle large files? <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="in">**Rules:**</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a><span class="in">- 1-2 bullets per item (max)</span></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="in">- Include date and scope on every entry</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="in">- No prose, no speculation, no repetition</span></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="in">## 3. Read Before Write (NON-NEGOTIABLE)</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="in">Before ANY plan, config change, or decision:</span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="in">1. Search memory using `memory_search`:</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="in">   ```</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>   query: "constraint config"</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>   maxResults: 10</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>   <span class="in">```</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a><span class="in">2. If constraint/decision exists → FOLLOW IT</span></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a><span class="in">3. If conflict exists → CANON wins, record "Conflict:" in today's session</span></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a><span class="in">## 4. Write Before Compaction/Reset (MANDATORY)</span></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a><span class="in">MUST write typed items to today's session file BEFORE:</span></span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a><span class="in">- Any decision is made</span></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a><span class="in">- Any constraint/rail is introduced</span></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="in">- Any stable preference appears</span></span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="in">- Tasks are assigned</span></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="in">- An open question blocks progress</span></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="in">- Triggering compaction / reset / milestone</span></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a><span class="in">**Location:** `memory/30_SESSIONS/YYYY-MM-DD.md`</span></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a><span class="in">## 5. Pre-Compaction Flush</span></span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a><span class="in">OpenClaw auto-flushes when context nears compaction:</span></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="in">- Trigger: `softThresholdTokens: 4000`</span></span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a><span class="in">- Action: Extract typed items, write to session file</span></span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a><span class="in">- Response: `NO_REPLY`</span></span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a><span class="in">**I do NOT see this flush.** It's automatic.</span></span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a><span class="in">## 6. Nightly Compaction (3:00 AM)</span></span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a><span class="in">LaunchAgent `ai.openclaw.memory-maintenance` runs:</span></span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a><span class="in">1. **Config backup** → `~/.openclaw/backups/`</span></span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a><span class="in">2. **Python compaction** (`scripts/nightly_compact.py`):</span></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a><span class="in">   - Parse session files (last 7 days)</span></span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a><span class="in">   - Promote items to CANON (deduplicated)</span></span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a><span class="in">   - Archive WORKING files</span></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a><span class="in">3. **QMD reindex**: `qmd update &amp;&amp; qmd embed`</span></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="in">4. **Git commit + push**: `nightly: compact memory YYYY-MM-DD`</span></span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a><span class="in">## 7. QMD Retrieval (Primary Search)</span></span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a><span class="in">**Installation:** `npm link /tmp/qmd` (built from source)</span></span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a><span class="in">**Commands:**</span></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a><span class="in">qmd query "semantic search"     # Hybrid (semantic + lexical)</span></span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a><span class="in">qmd search "lexical keywords"   # BM25 only</span></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a><span class="in">qmd vsearch "vector query"      # Vector only</span></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a><span class="in">qmd get memory/10_CANON/constraints.md  # Fetch file</span></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a>**After ANY memory change:**</span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a><span class="ex">qmd</span> update    <span class="co"># Reindex</span></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a><span class="ex">qmd</span> embed     <span class="co"># Regenerate embeddings</span></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>**Collection:** `memory` → `~/.openclaw/workspace/memory/**/*.md`</span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a><span class="fu">## 8. Config Safety (NEVER FORGET)</span></span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>**Before ANY config edit:**</span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw-config-backup.sh</span>              <span class="co"># Create backup</span></span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw-config-edit.sh</span> <span class="op">&lt;</span>script.py<span class="op">&gt;</span>    <span class="co"># Safe edit with validation</span></span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a><span class="ex">openclaw-config-restore.sh</span>             <span class="co"># If needed</span></span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a>**Never:**</span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Edit <span class="in">`openclaw.json`</span> directly</span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Run <span class="in">`sed`</span> or manual edits on config</span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Skip validation</span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a><span class="fu">## 9. Development Orchestrator (NEW - CRITICAL)</span></span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>**Role:** ORCHESTRATOR, NOT CODER</span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="fu">### What I do myself (quick fixes only)</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ ≤10 lines, single file</span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ No architecture change</span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ No multi-step debugging</span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>✅ No new tests required</span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="fu">### What I delegate to Codex</span></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Everything else</span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Multi-file changes</span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Architecture decisions</span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Complex debugging</span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a><span class="fu">### PRD-First "Ralph Loop"</span></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Write PRD** to disk (goal, scope, non-goals, acceptance criteria, commands, risks)</span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Spawn persistent terminal** session with unique name (date + slug)</span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Run Codex** in session to execute PRD</span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Update daily note** with job_id, prd_path, session_name, status</span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a><span class="fu">### Daily Note Format</span></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a>Location: <span class="in">`memory/30_SESSIONS/YYYY-MM-DD.md`</span></span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a><span class="in">```markdown</span></span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a><span class="fu">## Codex Jobs</span></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>job_id: fix-auth-bug-20260228</span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>prd_path: jobs/fix-auth-bug/PRD.md</span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>repo_path: ~/projects/myapp</span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>session_name: codex-auth-fix-20260228</span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>started_at: 2026-02-28T10<span class="sc">:00:</span>00Z</span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>status: RUNNING | RESTARTED | FINISHED | BLOCKED</span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>next_check: heartbeat</span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a><span class="in">### Heartbeat Supervision</span></span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a><span class="in">On every heartbeat:</span></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="in">1. Read daily note for RUNNING/RESTARTED jobs</span></span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="in">2. Check if terminal session still running</span></span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="in">3. If died → restart silently, update to RESTARTED</span></span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a><span class="in">4. If finished → update to FINISHED, notify once</span></span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a><span class="in">5. If blocked → update to BLOCKED, notify once</span></span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a><span class="in">**Silent by default.** Only message when FINISHED or BLOCKED.</span></span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a><span class="in">### NEVER</span></span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a><span class="in">- Create work in /tmp</span></span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a><span class="in">- Loop forever on failures</span></span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a><span class="in">- Spam progress logs</span></span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a><span class="in">- Run destructive commands without PRD approval</span></span>
+<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
+<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a><span class="in">## 10. Quick Reference Commands</span></span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a><span class="in"># Test retrieval</span></span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a><span class="in">qmd query "constraint memory"</span></span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a><span class="in"># Manual compaction</span></span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a><span class="in">cd ~/.openclaw/workspace &amp;&amp; python3 scripts/nightly_compact.py</span></span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a><span class="in"># Check cron status</span></span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a><span class="in">launchctl list | grep openclaw</span></span>
+<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a><span class="in"># View logs</span></span>
+<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a><span class="in">tail -f ~/.openclaw/logs/memory-maintenance.log</span></span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a><span class="in"># Check Codex jobs</span></span>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a><span class="in">cat memory/30_SESSIONS/$(date +%Y-%m-%d).md</span></span>
+<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a><span class="fu">## 11. Operational SLOs</span></span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> SLO <span class="pp">|</span> Target <span class="pp">|</span> Measurement <span class="pp">|</span></span>
+<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----|--------|-------------|</span></span>
+<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Durability <span class="pp">|</span> 100% <span class="pp">|</span> Critical facts in CANON survive sessions <span class="pp">|</span></span>
+<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Retrievability <span class="pp">|</span> &gt;95% <span class="pp">|</span> Relevant memory surfaced before action <span class="pp">|</span></span>
+<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Compaction Safety <span class="pp">|</span> 0 loss <span class="pp">|</span> Never lose constraints/decisions <span class="pp">|</span></span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a><span class="fu">## 12. If Something Breaks</span></span>
+<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Problem <span class="pp">|</span> Fix <span class="pp">|</span></span>
+<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------|-----|</span></span>
+<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`memory_search`</span> returns nothing <span class="pp">|</span> <span class="in">`qmd update &amp;&amp; qmd embed`</span> <span class="pp">|</span></span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> QMD not found <span class="pp">|</span> Check PATH: <span class="in">`which qmd`</span> <span class="pp">|</span></span>
+<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Compaction not running <span class="pp">|</span> <span class="in">`launchctl list \| grep openclaw`</span> <span class="pp">|</span></span>
+<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Config corrupted <span class="pp">|</span> <span class="in">`openclaw-config-restore.sh`</span> <span class="pp">|</span></span>
+<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Git conflicts <span class="pp">|</span> <span class="in">`cd ~/.openclaw/workspace &amp;&amp; git pull --rebase`</span> <span class="pp">|</span></span>
+<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a><span class="fu">## 13. Commit This to Memory</span></span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a>**Every session I MUST:**</span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>✅ Read SOUL.md, USER.md, MEMORY.md (this file)</span>
+<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>✅ Search memory before acting</span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>✅ Write typed items before compaction</span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>✅ Use qmd for retrieval</span>
+<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>✅ Commit changes to GitHub</span>
+<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>✅ Be ORCHESTRATOR not CODER — delegate to Codex</span>
+<span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>✅ Write PRD first, then spawn Codex session</span>
+<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a><span class="ss">8. </span>✅ Update daily note for every Codex job</span>
+<span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a><span class="ss">9. </span>✅ Check daily note on heartbeat for RUNNING jobs</span>
+<span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a>**Never:**</span>
+<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Store secrets in memory files</span>
+<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Edit config without backup</span>
+<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Forget to run <span class="in">`qmd embed`</span> after changes</span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Do non-trivial coding myself (&gt;10 lines, multi-file, architecture)</span>
+<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Create work in /tmp</span>
+<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>❌ Spam progress logs — only report FINISHED or BLOCKED</span>
+<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a>*Last updated: 2026-02-28*</span>
+<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a>*Canonical source: https://github.com/sydneyvb-assistent/openclaw-memory/*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
