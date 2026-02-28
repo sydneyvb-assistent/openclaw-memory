@@ -1,0 +1,1 @@
+0 3 * * * /Users/sydneyassistent/bin/nightly-memory-maintenance.sh
