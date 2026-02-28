@@ -318,7 +318,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#canon-decisions" id="toc-canon-decisions" class="nav-link active" data-scroll-target="#canon-decisions">Canon: Decisions</a>
   <ul class="collapse">
   <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
-  <li><a href="#global-decisions" id="toc-global-decisions" class="nav-link" data-scroll-target="#global-decisions">Global Decisions</a></li>
+  <li><a href="#memory-system-decisions" id="toc-memory-system-decisions" class="nav-link" data-scroll-target="#memory-system-decisions">Memory System Decisions</a></li>
+  <li><a href="#model-routing-decisions" id="toc-model-routing-decisions" class="nav-link" data-scroll-target="#model-routing-decisions">Model Routing Decisions</a></li>
+  <li><a href="#config-safety-decisions" id="toc-config-safety-decisions" class="nav-link" data-scroll-target="#config-safety-decisions">Config Safety Decisions</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/edit/main/memory/10_CANON/decisions.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -339,15 +341,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Decision: [description] [YYYY-MM-DD] [scope]</li>
 </ul>
 </section>
-<section id="global-decisions" class="level2">
-<h2 class="anchored" data-anchor-id="global-decisions">Global Decisions</h2>
+<section id="memory-system-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="memory-system-decisions">Memory System Decisions</h2>
 <ul>
-<li>Decision: Memory Architect system initialized with 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) [2026-02-27] [system:memory]</li>
-<li>Decision: GitHub repo set as durable source of truth; OpenClaw pre-compaction flush enabled [2026-02-27] [system:memory]</li>
-<li>Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model, escalate only when needed [2026-02-27] [system:models]</li>
-<li>Decision: Memory Architect system initialized with 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) [2026-02-27] [system:memory]</li>
-<li>Decision: GitHub repo set as durable source of truth; OpenClaw pre-compaction flush enabled [2026-02-27] [system:memory]</li>
-<li>Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model, escalate only when needed [2026-02-27] [system:models]</li>
+<li>Decision: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the canonical memory system [2026-02-27] [system:memory]</li>
+<li>Decision: GitHub repo is the durable source of truth; auto-commit and push enabled [2026-02-27] [system:memory]</li>
+<li>Decision: QMD (Quick Markdown Search) is the retrieval backend for hybrid search [2026-02-28] [system:memory]</li>
+<li>Decision: Nightly compaction runs at 3:00 AM via LaunchAgent ai.openclaw.memory-maintenance [2026-02-28] [system:memory]</li>
+<li>Decision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers [2026-02-27] [system:memory]</li>
+<li>Decision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON [2026-02-27] [system:memory]</li>
+</ul>
+</section>
+<section id="model-routing-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="model-routing-decisions">Model Routing Decisions</h2>
+<ul>
+<li>Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model [2026-02-27] [system:models]</li>
+<li>Decision: Primary default model is moonshot/kimi-k2.5 [2026-02-28] [system:models]</li>
+<li>Decision: Escalate to OpenAI/Anthropic only for high-stakes tasks or Groq failures [2026-02-27] [system:models]</li>
+</ul>
+</section>
+<section id="config-safety-decisions" class="level2">
+<h2 class="anchored" data-anchor-id="config-safety-decisions">Config Safety Decisions</h2>
+<ul>
+<li>Decision: Config recovery system with backup/validate/restore scripts in ~/bin/ [2026-02-28] [system:safety]</li>
+<li>Decision: openclaw-config-edit.sh is the ONLY allowed method for config modifications [2026-02-28] [system:safety]</li>
+<li>Decision: Daily config backup cron at 3:00 AM [2026-02-28] [system:safety]</li>
 </ul>
 
 
@@ -828,14 +846,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Format</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: <span class="co">[</span><span class="ot">description</span><span class="co">] [YYYY-MM-DD]</span> <span class="co">[</span><span class="ot">scope</span><span class="co">]</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Global Decisions</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Memory System Decisions</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Memory Architect system initialized with 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: GitHub repo set as durable source of truth; OpenClaw pre-compaction flush enabled <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model, escalate only when needed <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Memory Architect system initialized with 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: GitHub repo set as durable source of truth; OpenClaw pre-compaction flush enabled <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model, escalate only when needed <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the canonical memory system <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: GitHub repo is the durable source of truth; auto-commit and push enabled <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: QMD (Quick Markdown Search) is the retrieval backend for hybrid search <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Nightly compaction runs at 3:00 AM via LaunchAgent ai.openclaw.memory-maintenance <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Routing Decisions</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Primary default model is moonshot/kimi-k2.5 <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:models]</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Escalate to OpenAI/Anthropic only for high-stakes tasks or Groq failures <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Config Safety Decisions</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Config recovery system with backup/validate/restore scripts in ~/bin/ <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: openclaw-config-edit.sh is the ONLY allowed method for config modifications <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Daily config backup cron at 3:00 AM <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [system:safety]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

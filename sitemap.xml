@@ -2,86 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/IDENTITY.html</loc>
-    <lastmod>2026-02-28T13:24:08.842Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/MEMORY.html</loc>
-    <lastmod>2026-02-28T13:24:08.842Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/10_CANON/constraints.html</loc>
-    <lastmod>2026-02-28T13:24:08.843Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/archive/working/2026-02-28/scratch-2026-02-28.html</loc>
-    <lastmod>2026-02-28T13:24:08.844Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/2026-02-28-multi-provider.html</loc>
-    <lastmod>2026-02-28T13:24:08.843Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/40_WORKING/scratch.html</loc>
-    <lastmod>2026-02-28T13:24:08.844Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/30_SESSIONS/2026-02-27.html</loc>
-    <lastmod>2026-02-28T13:24:08.844Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/USER.html</loc>
-    <lastmod>2026-02-28T13:24:08.842Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
   </url>
   <url>
-    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/SOUL.html</loc>
-    <lastmod>2026-02-28T13:24:08.842Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/TOOLS.html</loc>
-    <lastmod>2026-02-28T13:24:08.842Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory.html</loc>
-    <lastmod>2026-02-28T13:24:08.843Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/AGENTS.html</loc>
-    <lastmod>2026-02-28T13:24:08.842Z</lastmod>
+    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/MEMORY_ARCHITECT.html</loc>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/BOOTSTRAP.html</loc>
-    <lastmod>2026-02-28T13:24:08.842Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/AGENTS.html</loc>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory.html</loc>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/TOOLS.html</loc>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sydneyvb-assistent.github.io/openclaw-memory/SOUL.html</loc>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/index.html</loc>
-    <lastmod>2026-02-28T13:24:08.843Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/HEARTBEAT.html</loc>
-    <lastmod>2026-02-28T13:24:08.842Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.157Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/30_SESSIONS/2026-02-27-backup.html</loc>
-    <lastmod>2026-02-28T13:24:08.844Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/40_WORKING/inbox.html</loc>
-    <lastmod>2026-02-28T13:24:08.844Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/archive/working/2026-02-28/inbox-2026-02-28.html</loc>
-    <lastmod>2026-02-28T13:24:08.844Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/10_CANON/decisions.html</loc>
-    <lastmod>2026-02-28T13:24:08.843Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/memory/10_CANON/preferences.html</loc>
-    <lastmod>2026-02-28T13:24:08.843Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
   <url>
     <loc>https://sydneyvb-assistent.github.io/openclaw-memory/scripts/RUNBOOK.html</loc>
-    <lastmod>2026-02-28T13:24:08.844Z</lastmod>
+    <lastmod>2026-02-28T13:28:26.158Z</lastmod>
   </url>
 </urlset>
