@@ -6,9 +6,6 @@ format:
     toc-depth: 3
     code-fold: true
   gfm: default
-execute:
-  echo: false
-  warning: false
 ---
 
 ## Overview
@@ -33,19 +30,10 @@ This is the rendered memory archive for the OpenClaw agent system.
 
 ## Session Log
 
-```{r}
-#| echo: false
-#| results: asis
+Recent session files in `memory/30_SESSIONS/`:
 
-# List all session files
-session_files <- list.files("memory/30_SESSIONS", pattern = "\\.md$", full.names = TRUE)
-if (length(session_files) > 0) {
-  cat("### Recent Sessions\n\n")
-  for (f in sort(session_files, decreasing = TRUE)) {
-    cat(sprintf("- [%s](%s)\n", basename(f), f))
-  }
-}
-```
+- [2026-02-27.md](memory/30_SESSIONS/2026-02-27.md)
+- [2026-02-28-multi-provider.md](memory/2026-02-28-multi-provider.md)
 
 ## Model Configuration
 
@@ -55,7 +43,4 @@ if (length(session_files) > 0) {
 
 ## Last Updated
 
-```{r}
-#| echo: false
-Sys.time()
-```
+2026-02-28
