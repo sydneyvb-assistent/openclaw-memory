@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: _site
+  
+website:
+  title: "OpenClaw Memory"
+  navbar:
+    left:
+      - href: memory.qmd
+        text: Memory
+      - href: index.md
+        text: Home
+  
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-copy: true
+    code-fold: true
+    
+execute:
+  freeze: auto

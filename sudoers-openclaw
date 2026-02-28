@@ -1,0 +1,39 @@
+# Sudo configuration for sydneyassistent
+# Place this file in /etc/sudoers.d/ (requires admin once)
+# Allows OpenClaw agent to run specific commands without password
+
+# Allow package managers (brew, npm, etc.)
+sydneyassistent ALL=(ALL) NOPASSWD: /opt/homebrew/bin/brew
+sydneyassistent ALL=(ALL) NOPASSWD: /usr/local/bin/brew
+sydneyassistent ALL=(ALL) NOPASSWD: /usr/bin/npm
+sydneyassistent ALL=(ALL) NOPASSWD: /Users/sydneyassistent/.nvm/versions/*/bin/npm
+sydneyassistent ALL=(ALL) NOPASSWD: /Users/sydneyassistent/.nvm/versions/*/bin/node
+
+# Allow app installation via installer
+sydneyassistent ALL=(ALL) NOPASSWD: /usr/sbin/installer
+
+# Allow launchctl for service management
+sydneyassistent ALL=(ALL) NOPASSWD: /bin/launchctl
+sydneyassistent ALL=(ALL) NOPASSWD: /usr/bin/launchctl
+
+# Allow defaults for system preferences
+sydneyassistent ALL=(ALL) NOPASSWD: /usr/bin/defaults
+
+# Allow shutdown/restart
+sydneyassistent ALL=(ALL) NOPASSWD: /sbin/shutdown
+sydneyassistent ALL=(ALL) NOPASSWD: /sbin/reboot
+
+# Allow killing processes
+sydneyassistent ALL=(ALL) NOPASSWD: /bin/kill
+sydneyassistent ALL=(ALL) NOPASSWD: /usr/bin/killall
+
+# Allow OpenClaw specific commands
+sydneyassistent ALL=(ALL) NOPASSWD: /Users/sydneyassistent/.nvm/versions/*/bin/openclaw
+sydneyassistent ALL=(ALL) NOPASSWD: /Users/sydneyassistent/.nvm/versions/*/lib/node_modules/openclaw/dist/index.js
+
+# IMPORTANT: Always require password for these (never add):
+# - rm -rf /
+# - dd (disk operations)
+# - visudo / sudoers editing
+# - passwd / user management
+# - security / keychain access
