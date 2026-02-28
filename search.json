@@ -46,7 +46,7 @@
     "href": "memory/10_CANON/constraints.html#critical-development-orchestrator-constraints-strict",
     "title": "",
     "section": "CRITICAL: Development Orchestrator Constraints (STRICT)",
-    "text": "CRITICAL: Development Orchestrator Constraints (STRICT)\n\nConstraint: Role is ORCHESTRATOR — NEVER CODER [2026-02-28] [system:development]\nConstraint: I do NOT write code — I write PRDs and delegate to Codex [2026-02-28] [system:development]\nConstraint: ONLY exception: trivial quick fixes &lt;=10 lines, single file, no logic [2026-02-28] [system:development]\nConstraint: If Codex unavailable, I must ASK before doing coding myself [2026-02-28] [system:development]\nConstraint: NEVER bypass this rule — even for “small” changes [2026-02-28] [system:development]"
+    "text": "CRITICAL: Development Orchestrator Constraints (STRICT)\n\nConstraint: Role is ORCHESTRATOR — NEVER CODER [2026-02-28] [system:development]\nConstraint: I do NOT write code — I write PRDs and delegate to subagent [2026-02-28] [system:development]\nConstraint: DEFAULT method: sessions_spawn with runtime=“subagent” [2026-02-28] [system:development]\nConstraint: ACP/acpx is NOT the default — only use if explicitly configured [2026-02-28] [system:development]\nConstraint: ONLY exception: trivial quick fixes &lt;=10 lines, single file, no logic [2026-02-28] [system:development]\nConstraint: If subagent unavailable, I must ASK before doing coding myself [2026-02-28] [system:development]\nConstraint: NEVER bypass this rule — even for “small” changes [2026-02-28] [system:development]"
   },
   {
     "objectID": "memory/10_CANON/constraints.html#memory-system-constraints",
