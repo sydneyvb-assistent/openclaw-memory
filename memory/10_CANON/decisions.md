@@ -14,11 +14,17 @@ Architectural and behavioral decisions that shape the agent.
 - Decision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers [2026-02-27] [system:memory]
 - Decision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON [2026-02-27] [system:memory]
 
-## Model Routing Decisions
+## Model Routing Decisions (NEW POLICY)
 
-- Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model [2026-02-27] [system:models]
-- Decision: Primary default model is moonshot/kimi-k2.5 [2026-02-28] [system:models]
-- Decision: Escalate to OpenAI/Anthropic only for high-stakes tasks or Groq failures [2026-02-27] [system:models]
+- Decision: DEFAULT model is Moonshot kimi-k2.5 for almost everything (strong default) [2026-02-28] [system:models]
+- Decision: STRICT TRIVIAL GATE defines when downshift to cheaper models is allowed [2026-02-28] [system:models]
+- Decision: TRIVIAL tier: OpenAI gpt-5-nano (primary), Groq llama-3.1-8b-instant, Anthropic claude-haiku-4-5 [2026-02-28] [system:models]
+- Decision: NON-TRIVIAL tier: Moonshot kimi-k2.5 (primary), Anthropic claude-sonnet-4-6, OpenAI gpt-5.2, Groq llama-3.3-70b-versatile [2026-02-28] [system:models]
+- Decision: HEAVY tier: Moonshot kimi-k2-thinking (primary), Anthropic claude-opus-4-6, OpenAI gpt-5.2 [2026-02-28] [system:models]
+- Decision: Escalate immediately to NON-TRIVIAL if: steps/planning, code/config/commands, >5 sentences, tools needed, uncertainty [2026-02-28] [system:models]
+- Decision: Escalate to HEAVY if: NON-TRIVIAL output inconsistent, task clearly complex/high-stakes [2026-02-28] [system:models]
+- Decision: Cost discipline ONLY on STRICTLY TRIVIAL requests; competence > cost for real tasks [2026-02-28] [system:models]
+- Decision: Policy is: strong default + trivial downshift + fast escalation [2026-02-28] [system:models]
 
 ## Config Safety Decisions
 
