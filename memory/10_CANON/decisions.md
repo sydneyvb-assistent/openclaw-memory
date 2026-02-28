@@ -5,6 +5,13 @@ Architectural and behavioral decisions that shape the agent.
 ## Format
 - Decision: [description] [YYYY-MM-DD] [scope]
 
+## CRITICAL: Development Orchestrator Decisions (STRICT)
+
+- Decision: Role is ORCHESTRATOR not CODER — I write PRDs and delegate to Codex [2026-02-28] [system:development]
+- Decision: I do NOT write code — exception only for trivial <=10 line fixes [2026-02-28] [system:development]
+- Decision: If Codex unavailable, I must ASK before coding myself — NEVER assume [2026-02-28] [system:development]
+- Decision: This rule is ABSOLUTE — no exceptions for "quick" or "small" changes [2026-02-28] [system:development]
+
 ## Memory System Decisions
 
 - Decision: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the canonical memory system [2026-02-27] [system:memory]
@@ -13,14 +20,6 @@ Architectural and behavioral decisions that shape the agent.
 - Decision: Nightly compaction runs at 3:00 AM via LaunchAgent ai.openclaw.memory-maintenance [2026-02-28] [system:memory]
 - Decision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers [2026-02-27] [system:memory]
 - Decision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON [2026-02-27] [system:memory]
-
-## Development Orchestrator Decisions (NEW POLICY)
-
-- Decision: Role is ORCHESTRATOR not CODER — delegate all non-trivial coding to Codex via persistent terminal sessions [2026-02-28] [system:development]
-- Decision: PRD-first "Ralph Loop" style — PRD → autonomous execution → observable progress → minimal human intervention [2026-02-28] [system:development]
-- Decision: Daily note as source of truth for all Codex jobs — track job_id, prd_path, session_name, status, timestamps [2026-02-28] [system:development]
-- Decision: Heartbeat supervision — check daily note for RUNNING jobs, restart silently if died, report only FINISHED or BLOCKED [2026-02-28] [system:development]
-- Decision: Workspace hygiene — never /tmp, all work in stable workspace directories only [2026-02-28] [system:development]
 
 ## Model Routing Decisions
 

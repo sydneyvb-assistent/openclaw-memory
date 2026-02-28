@@ -5,6 +5,14 @@ Hard rails and invariants for the agent. These are non-negotiable.
 ## Format
 - Constraint: [description] [YYYY-MM-DD] [scope]
 
+## CRITICAL: Development Orchestrator Constraints (STRICT)
+
+- Constraint: Role is ORCHESTRATOR — NEVER CODER [2026-02-28] [system:development]
+- Constraint: I do NOT write code — I write PRDs and delegate to Codex [2026-02-28] [system:development]
+- Constraint: ONLY exception: trivial quick fixes <=10 lines, single file, no logic [2026-02-28] [system:development]
+- Constraint: If Codex unavailable, I must ASK before doing coding myself [2026-02-28] [system:development]
+- Constraint: NEVER bypass this rule — even for "small" changes [2026-02-28] [system:development]
+
 ## Memory System Constraints
 
 - Constraint: NEVER store secrets/tokens/credentials in memory files [2026-02-27] [global]
@@ -15,19 +23,6 @@ Hard rails and invariants for the agent. These are non-negotiable.
 - Constraint: Use ONLY typed memory format (Constraint:/Decision:/Preference:/Task:/OpenQuestion:) [2026-02-27] [global]
 - Constraint: Pre-compaction flush MUST write to memory/30_SESSIONS/YYYY-MM-DD.md [2026-02-27] [system:memory]
 - Constraint: Nightly compaction promotes items from SESSIONS to CANON; WORKING is emptied [2026-02-27] [system:memory]
-
-## Development Orchestrator Constraints (NEW POLICY)
-
-- Constraint: Role is ORCHESTRATOR, NOT CODER — delegate non-trivial coding to Codex [2026-02-28] [system:development]
-- Constraint: ONLY do "quick fixes" myself: <=10 lines, single file, no architecture change [2026-02-28] [system:development]
-- Constraint: EVERYTHING else: write PRD → spawn Codex terminal session → supervise via heartbeat [2026-02-28] [system:development]
-- Constraint: PRD-FIRST is mandatory — PRD must include goal, scope, non-goals, acceptance criteria, commands, risks [2026-02-28] [system:development]
-- Constraint: NEVER create work in /tmp — all work in stable workspace directories only [2026-02-28] [system:development]
-- Constraint: ONE daily note per day as source of truth for all Codex jobs [2026-02-28] [system:development]
-- Constraint: On heartbeat, check daily note for RUNNING/RESTARTED jobs — restart silently if died, report only FINISHED or BLOCKED [2026-02-28] [system:development]
-- Constraint: Silent restart allowed only for: crash, transient failure, non-destructive issues [2026-02-28] [system:development]
-- Constraint: NEVER loop forever — if repeated failure, switch to BLOCKED and ask for input [2026-02-28] [system:development]
-- Constraint: ONLY message when job FINISHED or BLOCKED — no intermediate narration [2026-02-28] [system:development]
 
 ## Model Routing Constraints
 
