@@ -42,18 +42,18 @@
     "text": "Format\n\nConstraint: [description] [YYYY-MM-DD] [scope]"
   },
   {
-    "objectID": "memory/10_CANON/constraints.html#global-constraints",
-    "href": "memory/10_CANON/constraints.html#global-constraints",
+    "objectID": "memory/10_CANON/constraints.html#memory-system-constraints",
+    "href": "memory/10_CANON/constraints.html#memory-system-constraints",
     "title": "",
-    "section": "Global Constraints",
-    "text": "Global Constraints\n\nConstraint: NEVER store secrets/tokens/credentials in memory files [2026-02-27] [global]\nConstraint: ALWAYS search memory before making decisions or changing config [2026-02-27] [global]\nConstraint: ALWAYS write typed items before compaction/reset/milestone [2026-02-27] [global]\nConstraint: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the persistent source of truth [2026-02-27] [system:memory]\nConstraint: GitHub repo is the durable source of truth; all durable memory must be committed [2026-02-27] [system:memory]\nConstraint: Use ONLY typed memory format (Constraint:/Decision:/Preference:/Task:/OpenQuestion:) [2026-02-27] [global]\nConstraint: Pre-compaction flush MUST write to memory/30_SESSIONS/YYYY-MM-DD.md [2026-02-27] [system:memory]\nConstraint: Nightly compaction promotes items from SESSIONS to CANON; WORKING is emptied [2026-02-27] [system:memory]"
+    "section": "Memory System Constraints",
+    "text": "Memory System Constraints\n\nConstraint: NEVER store secrets/tokens/credentials in memory files [2026-02-27] [global]\nConstraint: ALWAYS search memory before making decisions or changing config [2026-02-27] [global]\nConstraint: ALWAYS write typed items before compaction/reset/milestone [2026-02-27] [global]\nConstraint: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the persistent source of truth [2026-02-27] [system:memory]\nConstraint: GitHub repo is the durable source of truth; all durable memory must be committed [2026-02-27] [system:memory]\nConstraint: Use ONLY typed memory format (Constraint:/Decision:/Preference:/Task:/OpenQuestion:) [2026-02-27] [global]\nConstraint: Pre-compaction flush MUST write to memory/30_SESSIONS/YYYY-MM-DD.md [2026-02-27] [system:memory]\nConstraint: Nightly compaction promotes items from SESSIONS to CANON; WORKING is emptied [2026-02-27] [system:memory]"
   },
   {
-    "objectID": "memory/10_CANON/constraints.html#model-routing-constraints",
-    "href": "memory/10_CANON/constraints.html#model-routing-constraints",
+    "objectID": "memory/10_CANON/constraints.html#model-routing-constraints-new-policy",
+    "href": "memory/10_CANON/constraints.html#model-routing-constraints-new-policy",
     "title": "",
-    "section": "Model Routing Constraints",
-    "text": "Model Routing Constraints\n\nConstraint: LOW tasks → Groq/Moonshot small models; MEDIUM → OpenAI mid/Claude Sonnet; HIGH → Claude Opus/OpenAI flagship [2026-02-27] [system:models]\nConstraint: NEVER default to strongest model without justification; escalate progressively one tier at a time [2026-02-27] [system:models]\nConstraint: Fallback policy: retry same model → alternative provider same tier → escalate one tier; silent unless impacts correctness [2026-02-27] [system:models]\nConstraint: LOW models — Primary: openai/gpt-5-nano; Fallback: groq/llama-3.1-8b-instant, anthropic/claude-haiku-4-5 [2026-02-27] [system:models]\nConstraint: MEDIUM models — Primary: openai/gpt-5-mini; Fallback: anthropic/claude-sonnet-4-6, groq/llama-3.3-70b-versatile, moonshot/kimi-k2.5 [2026-02-27] [system:models]\nConstraint: HIGH models — Primary: anthropic/claude-opus-4-6; Fallback: openai/gpt-5.2, moonshot/kimi-k2-thinking [2026-02-27] [system:models]"
+    "section": "Model Routing Constraints (NEW POLICY)",
+    "text": "Model Routing Constraints (NEW POLICY)\n\nConstraint: DEFAULT model is ALWAYS Moonshot kimi-k2.5 (NON-TRIVIAL tier) [2026-02-28] [system:models]\nConstraint: DOWNSHIFT to TRIVIAL tier ONLY when STRICT TRIVIAL GATE passes [2026-02-28] [system:models]\nConstraint: STRICT TRIVIAL GATE: no tools, no multi-step, no irreversible action, &lt;=5 sentences, no config/security/finance/debugging [2026-02-28] [system:models]\nConstraint: When in doubt: NOT TRIVIAL — use NON-TRIVIAL default [2026-02-28] [system:models]\nConstraint: TRIVIAL tier: OpenAI gpt-5-nano (primary), Groq llama-3.1-8b-instant, Anthropic claude-haiku-4-5 [2026-02-28] [system:models]\nConstraint: NON-TRIVIAL tier: Moonshot kimi-k2.5 (primary), Anthropic claude-sonnet-4-6, OpenAI gpt-5.2, Groq llama-3.3-70b-versatile [2026-02-28] [system:models]\nConstraint: HEAVY tier: Moonshot kimi-k2-thinking (primary), Anthropic claude-opus-4-6, OpenAI gpt-5.2 — ONLY for complex/high-stakes tasks [2026-02-28] [system:models]\nConstraint: Escalate to NON-TRIVIAL immediately if: steps/planning needed, code/config/commands, &gt;5 sentences, tools needed, uncertainty [2026-02-28] [system:models]\nConstraint: Escalate to HEAVY if: NON-TRIVIAL output inconsistent, task clearly complex/high-stakes [2026-02-28] [system:models]\nConstraint: Fallback policy: retry same model once → next fallback → escalate tier; silent unless affects correctness [2026-02-28] [system:models]\nConstraint: Cost discipline ONLY on STRICTLY TRIVIAL requests; for real tasks: competence &gt; cost [2026-02-28] [system:models]\nConstraint: NEVER use multiple model calls unless failure forces fallback [2026-02-28] [system:models]"
   },
   {
     "objectID": "memory/10_CANON/constraints.html#qmd-retrieval-constraints",
@@ -630,11 +630,11 @@
     "text": "Memory System Decisions\n\nDecision: Memory Architect 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) is the canonical memory system [2026-02-27] [system:memory]\nDecision: GitHub repo is the durable source of truth; auto-commit and push enabled [2026-02-27] [system:memory]\nDecision: QMD (Quick Markdown Search) is the retrieval backend for hybrid search [2026-02-28] [system:memory]\nDecision: Nightly compaction runs at 3:00 AM via LaunchAgent ai.openclaw.memory-maintenance [2026-02-28] [system:memory]\nDecision: Pre-compaction flush writes typed items to memory/30_SESSIONS/YYYY-MM-DD.md before compaction triggers [2026-02-27] [system:memory]\nDecision: WORKING tier (inbox/scratch) is emptied nightly; durable items promoted to CANON [2026-02-27] [system:memory]"
   },
   {
-    "objectID": "memory/10_CANON/decisions.html#model-routing-decisions",
-    "href": "memory/10_CANON/decisions.html#model-routing-decisions",
+    "objectID": "memory/10_CANON/decisions.html#model-routing-decisions-new-policy",
+    "href": "memory/10_CANON/decisions.html#model-routing-decisions-new-policy",
     "title": "",
-    "section": "Model Routing Decisions",
-    "text": "Model Routing Decisions\n\nDecision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model [2026-02-27] [system:models]\nDecision: Primary default model is moonshot/kimi-k2.5 [2026-02-28] [system:models]\nDecision: Escalate to OpenAI/Anthropic only for high-stakes tasks or Groq failures [2026-02-27] [system:models]"
+    "section": "Model Routing Decisions (NEW POLICY)",
+    "text": "Model Routing Decisions (NEW POLICY)\n\nDecision: DEFAULT model is Moonshot kimi-k2.5 for almost everything (strong default) [2026-02-28] [system:models]\nDecision: STRICT TRIVIAL GATE defines when downshift to cheaper models is allowed [2026-02-28] [system:models]\nDecision: TRIVIAL tier: OpenAI gpt-5-nano (primary), Groq llama-3.1-8b-instant, Anthropic claude-haiku-4-5 [2026-02-28] [system:models]\nDecision: NON-TRIVIAL tier: Moonshot kimi-k2.5 (primary), Anthropic claude-sonnet-4-6, OpenAI gpt-5.2, Groq llama-3.3-70b-versatile [2026-02-28] [system:models]\nDecision: HEAVY tier: Moonshot kimi-k2-thinking (primary), Anthropic claude-opus-4-6, OpenAI gpt-5.2 [2026-02-28] [system:models]\nDecision: Escalate immediately to NON-TRIVIAL if: steps/planning, code/config/commands, &gt;5 sentences, tools needed, uncertainty [2026-02-28] [system:models]\nDecision: Escalate to HEAVY if: NON-TRIVIAL output inconsistent, task clearly complex/high-stakes [2026-02-28] [system:models]\nDecision: Cost discipline ONLY on STRICTLY TRIVIAL requests; competence &gt; cost for real tasks [2026-02-28] [system:models]\nDecision: Policy is: strong default + trivial downshift + fast escalation [2026-02-28] [system:models]"
   },
   {
     "objectID": "memory/10_CANON/decisions.html#config-safety-decisions",
