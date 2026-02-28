@@ -1,0 +1,39 @@
+# Memory Archive
+
+
+## Overview
+
+This is the rendered memory archive for the OpenClaw agent system.
+
+## Directory Structure
+
+| Tier     | Path                  | Purpose                         |
+|----------|-----------------------|---------------------------------|
+| CANON    | `memory/10_CANON/`    | Small, stable, curated          |
+| PROJECTS | `memory/20_PROJECTS/` | Bounded, scoped                 |
+| SESSIONS | `memory/30_SESSIONS/` | Append-only daily notes         |
+| WORKING  | `memory/40_WORKING/`  | Inbox/scratch (emptied nightly) |
+
+## Quick Links
+
+- [Constraints](memory/10_CANON/constraints.md)
+- [Preferences](memory/10_CANON/preferences.md)
+- [Decisions](memory/10_CANON/decisions.md)
+- [Today’s Session](memory/30_SESSIONS/2026-02-27.md)
+
+## Session Log
+
+Recent session files in `memory/30_SESSIONS/`:
+
+- [2026-02-27.md](memory/30_SESSIONS/2026-02-27.md)
+- [2026-02-28-multi-provider.md](memory/2026-02-28-multi-provider.md)
+
+## Model Configuration
+
+**Primary Provider:** Groq  
+**Default Model:** qwen/qwen3-32b  
+**Fallback Chain:** See [routing-config.json](routing-config.json)
+
+## Last Updated
+
+2026-02-28
