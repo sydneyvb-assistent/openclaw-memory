@@ -1,0 +1,1 @@
+- Task: Fix VPM Geboorteplan login flow issues (3 bugs) [2026-02-28] [project:vpm-geboorteplan]

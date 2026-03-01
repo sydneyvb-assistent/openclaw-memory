@@ -37,4 +37,7 @@ Architectural and behavioral decisions that shape the agent.
 
 - Decision: Config recovery system with backup/validate/restore scripts in ~/bin/ [2026-02-28] [system:safety]
 - Decision: openclaw-config-edit.sh is the ONLY allowed method for config modifications [2026-02-28] [system:safety]
-- Decision: Daily config backup cron at 3:00 AM [2026-02-28] [system:safety]
+- Decision: Daily config backup cron at 3:00 AM [2026-02-28] [system:safety]- Decision: Memory Architect system initialized with 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) [2026-02-27] [system:memory]
+- Decision: GitHub repo set as durable source of truth; OpenClaw pre-compaction flush enabled [2026-02-27] [system:memory]
+- Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model, escalate only when needed [2026-02-27] [system:models]
+- Decision: Memory Architect system initialized with 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) [2026-02-27] [system:memory]
