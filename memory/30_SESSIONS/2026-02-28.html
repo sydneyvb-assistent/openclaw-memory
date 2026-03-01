@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input7da526b18a714b55 – OpenClaw Memory</title>
+<title>quarto-inputd8da5d5edbfa7c45 – OpenClaw Memory</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -315,13 +315,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#session-log-2026-02-27" id="toc-session-log-2026-02-27" class="nav-link active" data-scroll-target="#session-log-2026-02-27">Session Log: 2026-02-27</a>
+  <li><a href="#session-log-2026-02-28" id="toc-session-log-2026-02-28" class="nav-link active" data-scroll-target="#session-log-2026-02-28">Session Log: 2026-02-28</a>
   <ul class="collapse">
   <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
+  <li><a href="#codex-jobs" id="toc-codex-jobs" class="nav-link" data-scroll-target="#codex-jobs">Codex Jobs</a>
+  <ul class="collapse">
+  <li><a href="#job-1-vpm-login-fixes" id="toc-job-1-vpm-login-fixes" class="nav-link" data-scroll-target="#job-1-vpm-login-fixes">Job 1: VPM Login Fixes</a></li>
+  <li><a href="#job-2-placeholder-for-future-jobs" id="toc-job-2-placeholder-for-future-jobs" class="nav-link" data-scroll-target="#job-2-placeholder-for-future-jobs">Job 2: (placeholder for future jobs)</a></li>
+  </ul></li>
   <li><a href="#todays-notes" id="toc-todays-notes" class="nav-link" data-scroll-target="#todays-notes">Today’s Notes</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/edit/main/memory/30_SESSIONS/2026-02-27.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/edit/main/memory/30_SESSIONS/2026-02-28.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7"></h1></header><div class="quarto-title-block"><div class="quarto-title-tools-only"><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
@@ -330,8 +335,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="session-log-2026-02-27" class="level1">
-<h1>Session Log: 2026-02-27</h1>
+<section id="session-log-2026-02-28" class="level1">
+<h1>Session Log: 2026-02-28</h1>
 <p>Daily flush notes. Append-only. Nightly compaction promotes durable items to canon.</p>
 <section id="format" class="level2">
 <h2 class="anchored" data-anchor-id="format">Format</h2>
@@ -341,24 +346,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Types: Constraint:, Decision:, Preference:, Task:, OpenQuestion:</p>
 <hr>
 </section>
+<section id="codex-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="codex-jobs">Codex Jobs</h2>
+<section id="job-1-vpm-login-fixes" class="level3">
+<h3 class="anchored" data-anchor-id="job-1-vpm-login-fixes">Job 1: VPM Login Fixes</h3>
+<ul>
+<li><strong>job_id</strong>: vpm-login-fixes-20260228</li>
+<li><strong>prd_path</strong>: jobs/login-fixes-20260228/PRD.md</li>
+<li><strong>repo_path</strong>: ~/.openclaw/workspace/vpm-geboorteplan</li>
+<li><strong>session_name</strong>: codex-vpm-login-20260228</li>
+<li><strong>started_at</strong>: 2026-02-28T15:42:00Z</li>
+<li><strong>status</strong>: RUNNING</li>
+<li><strong>next_check</strong>: heartbeat</li>
+</ul>
+</section>
+<section id="job-2-placeholder-for-future-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="job-2-placeholder-for-future-jobs">Job 2: (placeholder for future jobs)</h3>
+<hr>
+</section>
+</section>
 <section id="todays-notes" class="level2">
 <h2 class="anchored" data-anchor-id="todays-notes">Today’s Notes</h2>
 <ul>
-<li>Decision: Memory Architect system initialized with 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) [2026-02-27] [system:memory]</li>
-<li>Decision: GitHub repo set as durable source of truth; OpenClaw pre-compaction flush enabled [2026-02-27] [system:memory]</li>
-<li>Constraint: NEVER store secrets/tokens/credentials in memory files [2026-02-27] [global]</li>
-<li>Constraint: ALWAYS search memory before making decisions or changing config [2026-02-27] [global]</li>
-<li>Constraint: ALWAYS write typed items before compaction/reset/milestone [2026-02-27] [global]</li>
-<li>Preference: Use typed memory format (Constraint:/Decision:/Preference:/Task:/OpenQuestion:) [2026-02-27] [global]</li>
-<li>Task: Complete Memory Architect implementation and verify retrieval works [2026-02-27] [system:memory]</li>
-<li>Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model, escalate only when needed [2026-02-27] [system:models]</li>
-<li>Constraint: LOW tasks → Groq/Moonshot small models; MEDIUM → OpenAI mid/Claude Sonnet; HIGH → Claude Opus/OpenAI flagship [2026-02-27] [system:models]</li>
-<li>Constraint: NEVER default to strongest model without justification; escalate progressively one tier at a time [2026-02-27] [system:models]</li>
-<li>Constraint: Fallback policy: retry same model → alternative provider same tier → escalate one tier; silent unless impacts correctness [2026-02-27] [system:models]</li>
-<li>Preference: Cost discipline — treat tokens as real cost, avoid strongest models by default, avoid redundant calls [2026-02-27] [system:models]</li>
-<li>Constraint: LOW models — Primary: openai/gpt-5-nano; Fallback: groq/llama-3.1-8b-instant, anthropic/claude-haiku-4-5 [2026-02-27] [system:models]</li>
-<li>Constraint: MEDIUM models — Primary: openai/gpt-5-mini; Fallback: anthropic/claude-sonnet-4-6, groq/llama-3.3-70b-versatile, moonshot/kimi-k2.5 [2026-02-27] [system:models]</li>
-<li>Constraint: HIGH models — Primary: anthropic/claude-opus-4-6; Fallback: openai/gpt-5.2, moonshot/kimi-k2-thinking [2026-02-27] [system:models]</li>
+<li>Task: Fix VPM Geboorteplan login flow issues (3 bugs) [2026-02-28] [project:vpm-geboorteplan]</li>
+<li>OpenQuestion: Moeten we een betere onboarding flow maken voor nieuwe tenant users? [2026-02-28] [project:vpm-geboorteplan]</li>
 </ul>
 
 
@@ -832,7 +843,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Session Log: 2026-02-27</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Session Log: 2026-02-28</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Daily flush notes. Append-only. Nightly compaction promotes durable items to canon.</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -843,27 +854,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Today's Notes</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Codex Jobs</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Memory Architect system initialized with 4-tier structure (CANON/PROJECTS/SESSIONS/WORKING) <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: GitHub repo set as durable source of truth; OpenClaw pre-compaction flush enabled <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: NEVER store secrets/tokens/credentials in memory files <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [global]</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: ALWAYS search memory before making decisions or changing config <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [global]</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: ALWAYS write typed items before compaction/reset/milestone <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [global]</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Preference: Use typed memory format (Constraint:/Decision:/Preference:/Task:/OpenQuestion:) <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [global]</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Task: Complete Memory Architect implementation and verify retrieval works <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:memory]</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Decision: Model selection policy — classify tasks as LOW/MEDIUM/HIGH complexity, route to cheapest sufficient model, escalate only when needed <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: LOW tasks → Groq/Moonshot small models; MEDIUM → OpenAI mid/Claude Sonnet; HIGH → Claude Opus/OpenAI flagship <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: NEVER default to strongest model without justification; escalate progressively one tier at a time <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: Fallback policy: retry same model → alternative provider same tier → escalate one tier; silent unless impacts correctness <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Preference: Cost discipline — treat tokens as real cost, avoid strongest models by default, avoid redundant calls <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: LOW models — Primary: openai/gpt-5-nano; Fallback: groq/llama-3.1-8b-instant, anthropic/claude-haiku-4-5 <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: MEDIUM models — Primary: openai/gpt-5-mini; Fallback: anthropic/claude-sonnet-4-6, groq/llama-3.3-70b-versatile, moonshot/kimi-k2.5 <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Constraint: HIGH models — Primary: anthropic/claude-opus-4-6; Fallback: openai/gpt-5.2, moonshot/kimi-k2-thinking <span class="co">[</span><span class="ot">2026-02-27</span><span class="co">] [system:models]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### Job 1: VPM Login Fixes</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**job_id**: vpm-login-fixes-20260228</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**prd_path**: jobs/login-fixes-20260228/PRD.md</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**repo_path**: ~/.openclaw/workspace/vpm-geboorteplan</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**session_name**: codex-vpm-login-20260228</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**started_at**: 2026-02-28T15<span class="sc">:42:</span>00Z</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**status**: RUNNING</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**next_check**: heartbeat</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">### Job 2: (placeholder for future jobs)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Today's Notes</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Task: Fix VPM Geboorteplan login flow issues (3 bugs) <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [project:vpm-geboorteplan]</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>OpenQuestion: Moeten we een betere onboarding flow maken voor nieuwe tenant users? <span class="co">[</span><span class="ot">2026-02-28</span><span class="co">] [project:vpm-geboorteplan]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/edit/main/memory/30_SESSIONS/2026-02-27.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/edit/main/memory/30_SESSIONS/2026-02-28.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sydneyvb-assistent/openclaw-memory/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
